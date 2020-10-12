@@ -5,23 +5,30 @@ using UnityEngine;
 public class Collider : MonoBehaviour
 {
 
+    public float timer = 0.001f;
     public PlayerMovement pm;
 
-    //Collision detection on ground
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            pm.hitWall = true;
+
+
+    //check if tank has contact with wall
+    private void OnCollisionStay2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Wall")) {
+            if (timer > 0) {
+                pm.wallCollision = true;
+                timer -= Time.deltaTime;
+                if (timer <= 0) {
+                    pm.wallCollision = false;
+                }
+            }
         }
     }
 
     //Check if player no longer has collision with ground
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            pm.hitWall= false;
+    void OnCollisionExit2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Wall")) {
+            timer = 1f;
+            pm.wallCollision = false;
         }
     }
+
 }

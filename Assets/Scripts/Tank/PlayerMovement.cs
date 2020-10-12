@@ -4,145 +4,137 @@ using System.IO.Compression;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-{
-    public Rigidbody2D tankBody;
-    public GameObject dirIndicator1, dirIndicator2;
+public class PlayerMovement : MonoBehaviour {
+    public Rigidbody2D body;
+    public GameObject indicator1, indicator2;
 
-    //Attributes for movement
-    public float rotationSpeed = 5f;
-    public float speed = 100;
-    public float maxVelocity = 5f;
-    
-    //attributes for gravity and collision detection
-    private float gravityConstant = 1;
-    public bool gravityChanged = false;
-    public bool hitWall = false;
-    public bool jump = false;
+    public float rotationSpeed = 5f;    //rotation speed
+    public float maxVelocity = 4f;      //maximum velocity of player
+    private int gravityConstant = 1;    //is eather 1 with deafult ´gravity or -1 with reversed gravity
+    public int numberOfJumps = 0;       //indicates number of times the player has jumped
 
+    public bool moving = false;         //is true while tank is moving
+    public bool jump = false;           //is true when player changes direction mid-air
+    public bool gravityChanged = false; //is true if gravity has changed
+    public bool wallCollision = false;  //is true if tank collides with wall
 
-    private void Start()
-    {
+    public bool timerBool = false;      //boolean for direction change
+    public float timer = 0.01f;          //timer for direction 
+
+    // Start is called before the first frame update
+    void Start() {
+        //remove gravity of the player
         Physics2D.gravity = Vector2.zero;
     }
 
-
     // Update is called once per frame
-    void FixedUpdate()
-    {
+    void Update() {
+        toggleGravity();
+        commandMove();
+    }
+
+    // FixedUpdate is called once per frame (used for physics)
+    private void FixedUpdate() {
         rotate();
         move();
     }
 
 
-    private void Update()
-    {
-        playerJump();
-        changeGravity();
+
+    //rotate player
+    private void rotate() {
+        if (Input.GetKey(KeyCode.A)) {
+            body.rotation += rotationSpeed;
+        } else if (Input.GetKey(KeyCode.D)) {
+            body.rotation -= rotationSpeed;
+        }
     }
 
-    //player rotation
-    private void rotate()
-    {
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            tankBody.rotation += rotationSpeed;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            tankBody.rotation -= rotationSpeed;
-        }
+    //add force to tank in direction
+    private void addForceToBody() {
+        body.AddRelativeForce(gravityConstant * Vector2.right * maxVelocity * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     //toggle gravity change
-    private void changeGravity()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
+    private void toggleGravity() {
+        if (Input.GetKeyDown(KeyCode.W)) {
             gravityChanged = !gravityChanged;
         }
 
-        if (!gravityChanged)
-        {
-            dirIndicator1.GetComponent<Renderer>().material.color = Color.red;
-            dirIndicator2.GetComponent<Renderer>().material.color = Color.white;
-            gravityConstant = 1f;
-        }
-        else if(gravityChanged)
-        {
-            dirIndicator1.GetComponent<Renderer>().material.color = Color.white;
-            dirIndicator2.GetComponent<Renderer>().material.color = Color.red;
-            gravityConstant = -1f;
+        if (!gravityChanged) {
+            indicator1.GetComponent<Renderer>().material.color = Color.red;
+            indicator2.GetComponent<Renderer>().material.color = Color.white;
+            gravityConstant = 1;
+        } else if (gravityChanged) {
+            indicator1.GetComponent<Renderer>().material.color = Color.white;
+            indicator2.GetComponent<Renderer>().material.color = Color.red;
+            gravityConstant = -1;
         }
     }
 
-    //press space to jump
-    private void playerJump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && !jump)
-        {
+    //Used for the Update()-function (to avoid the FixedUpdateU()-function)
+    private void commandMove() {
+        //move when pressing space
+        if (Input.GetKeyDown(KeyCode.Space) && !moving) {
+            moving = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && moving && numberOfJumps == 1) {
             jump = true;
+
+        }
+        if (jump && !timerBool) {
+            if (timer > 0) {
+                timer -= Time.deltaTime;
+                if (timer <= 0) {
+                    timerBool = true;
+                }
+            }
         }
     }
 
-    //sets player velocity to 0
-    private void stopPlayer()
-    {
-        tankBody.velocity = Vector2.zero;
-        tankBody.angularVelocity = 0;
-    }
+    //Move the player
+    private void move() {
+        //set velocity to be constant
+        body.velocity = maxVelocity * (body.velocity.normalized);
 
-    //set maximum velocity
-    private void maximumVelocity()
-    {
-
-        if (tankBody.velocity.x >= maxVelocity)
-        {
-            tankBody.velocity = new Vector2(maxVelocity, tankBody.velocity.y);
+        //stop the tank if it is not moving
+        if (!moving) {
+            body.Sleep();
         }
-        if (tankBody.velocity.x <= -maxVelocity)
-        {
-            tankBody.velocity = new Vector2(-maxVelocity, tankBody.velocity.y);
+
+        //when move is true, fly in one direction
+        if (moving && numberOfJumps == 0) {
+            body.WakeUp();
+            addForceToBody();
+            numberOfJumps = 1;
         }
-        if (tankBody.velocity.y >= maxVelocity)
-        {
-            tankBody.velocity = new Vector2(tankBody.velocity.x, -maxVelocity);
+
+        //if player is already moving, change direction
+        if (moving && numberOfJumps == 1 && jump) {
+            body.Sleep();
+            if (body.IsSleeping()) {
+                body.WakeUp();
+                if (body.IsAwake()) {
+                    addForceToBody();
+                    if (timerBool) {
+                        jump = false;
+                        timerBool = false;
+                        numberOfJumps = 2;
+                        timer = 0.01f;
+                    }
+                }
+            }
         }
-        if (tankBody.velocity.y <= -maxVelocity)
-        {
-            tankBody.velocity = new Vector2(tankBody.velocity.x, maxVelocity);
-        }
-    }
 
-
-
-    //Move the player in direction
-    private void move() 
-    {
-        maximumVelocity();
-
-        if (jump)
-        {
+        //if tank collides with wall, stop movement
+        if (wallCollision) {
             jump = false;
-            tankBody.AddRelativeForce(gravityConstant * Vector2.right * speed, ForceMode2D.Impulse);
-        }
-
-        if(jump && !hitWall)
-        {
-            jump = false;
-            Invoke("stopPlayer", 0);
-            tankBody.AddRelativeForce(gravityConstant * Vector2.right * speed, ForceMode2D.Impulse);
+            moving = false;
+            numberOfJumps = 0;
+            body.Sleep();
         }
 
 
-        if(hitWall)
-        {
-            Invoke("stopPlayer", 0);
-            Invoke("move",0.5f);
-        }
     }
-
-
 }
 

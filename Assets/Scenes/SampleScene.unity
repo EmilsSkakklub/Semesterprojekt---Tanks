@@ -934,14 +934,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1123115395, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: SpeedDownAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1312563292, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: ssc
       value: 
       objectReference: {fileID: 519420030}
-    - target: {fileID: 1312563292, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
-      propertyPath: coolDownTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7674806845619064776, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -985,14 +985,6 @@ PrefabInstance:
     - target: {fileID: 7674806845619064776, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674806845619064777, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
-      propertyPath: tankBody
-      value: 
-      objectReference: {fileID: 1028165793}
-    - target: {fileID: 7674806845619064777, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
-      propertyPath: rotationSpeed
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7674806845619064823, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: m_Name
@@ -1275,11 +1267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ssc: {fileID: 519420030}
---- !u!50 &1028165793 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 7674806845743089718, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
-  m_PrefabInstance: {fileID: 598290968}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1043885328
 PrefabInstance:
   m_ObjectHideFlags: 0

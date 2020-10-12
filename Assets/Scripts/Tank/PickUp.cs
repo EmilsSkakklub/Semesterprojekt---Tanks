@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public Rigidbody2D rigidbodyTank;
+    public PlayerMovement tank;
 
     public bool TakenBoost;
 
     public float SpeedUpAmount = 3;
-    public float SpeedUpTime = 10;
+    public float RotationSpeedUpAmount = 3f;
+    
 
-    public float SpeedDownAmount = 0.5f;
+    public float SpeedDownAmount = 3f;
+    public float RotationSpeedDownAmount = 3f;
+
+    public float SpeedUpTime = 10;
     public float SpeedDownTime = 10;
 
-    private float OriginalMass;
+    private float OriginalSpeed;
+    private float OriginalRotationSpeed;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,22 +41,27 @@ public class PickUp : MonoBehaviour
     }
     private void IsSpeededUp()
     {
-        OriginalMass = rigidbodyTank.mass;
-        rigidbodyTank.mass = rigidbodyTank.mass - SpeedUpAmount;
+        OriginalSpeed = tank.maxVelocity;
+        OriginalRotationSpeed = tank.rotationSpeed;
+        tank.maxVelocity = tank.maxVelocity + SpeedUpAmount;
+        tank.rotationSpeed = tank.rotationSpeed + RotationSpeedUpAmount;
         Invoke("IsNormal", SpeedUpTime);
         TakenBoost = true;
         
     }
     private void IsSlowedDown()
     {
-        OriginalMass = rigidbodyTank.mass;
-        rigidbodyTank.mass = rigidbodyTank.mass + SpeedDownAmount;
+        OriginalSpeed = tank.maxVelocity;
+        OriginalRotationSpeed = tank.rotationSpeed;
+        tank.maxVelocity = tank.maxVelocity - SpeedDownAmount;
+        tank.rotationSpeed = tank.rotationSpeed - RotationSpeedUpAmount;
         Invoke("IsNormal", SpeedDownTime);
         TakenBoost = true;
     }
     private void IsNormal()
     {
-        rigidbodyTank.mass = OriginalMass;
+        tank.maxVelocity = OriginalSpeed;
+        tank.rotationSpeed = OriginalRotationSpeed;
         TakenBoost = false;
     }
 
