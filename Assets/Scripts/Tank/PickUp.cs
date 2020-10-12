@@ -18,6 +18,8 @@ public class PickUp : MonoBehaviour
     public float SpeedUpTime = 10;
     public float SpeedDownTime = 10;
 
+    public float Bombs = 0;
+
     private float OriginalSpeed;
     private float OriginalRotationSpeed;
 
@@ -37,7 +39,12 @@ public class PickUp : MonoBehaviour
                 Invoke("IsSlowedDown", 0);
                 Destroy(other.gameObject);
         }
+        else if (other.gameObject.tag == "BombUp") {
 
+            Debug.Log("bomb aquired");
+            Bombs++;
+            Destroy(other.gameObject);
+        }
     }
     private void IsSpeededUp()
     {

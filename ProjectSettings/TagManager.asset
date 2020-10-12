@@ -8,6 +8,8 @@ TagManager:
   - SpeedUp
   - SpeedDown
   - Bullet
+  - Bomb
+  - BombUp
   layers:
   - Default
   - TransparentFX

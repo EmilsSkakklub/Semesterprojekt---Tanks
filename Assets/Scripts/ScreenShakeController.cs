@@ -7,10 +7,10 @@ public class ScreenShakeController : MonoBehaviour
     private float shakeTimeRemaining, shakePower, shakeFadeTime, shakeRotation;
 
     public float rotationMultiplier = 7.5f;
-    public float length = .5f;
-    public float power = 1f;
-
-    public GameObject bullet;
+    public float length = .1f;
+    public float power = .1f;
+    public float bigLength = 1f;
+    public float bigPower = 1f;
  
 
     private void LateUpdate() {
