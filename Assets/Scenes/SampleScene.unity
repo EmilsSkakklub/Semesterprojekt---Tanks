@@ -990,6 +990,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 7674806845743089674, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: timer
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
 --- !u!1001 &644542267
