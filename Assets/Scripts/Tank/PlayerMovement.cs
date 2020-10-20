@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour {
     public float rotationSpeed = 5f;    //rotation speed
     public float maxVelocity = 4f;      //maximum velocity of player
     private int gravityConstant = 1;    //is eather 1 with deafult ´gravity or -1 with reversed gravity
-    public int numberOfJumps = 0;       //indicates number of times the player has jumped
+    public int timesJumped = 0;
+    public int totalJumps = 3;       //indicates number of times the player has jumped
 
     public bool moving = false;         //is true while tank is moving
     public bool jump = false;           //is true when player changes direction mid-air
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool wallCollision = false;  //is true if tank collides with wall
 
     public bool timerBool = false;      //boolean for direction change
-    public float timer = 0.01f;          //timer for direction 
+    public float timer = 0.1f;          //timer for direction 
 
     // Start is called before the first frame update
     void Start() {
@@ -75,18 +76,22 @@ public class PlayerMovement : MonoBehaviour {
     //Used for the Update()-function (to avoid the FixedUpdateU()-function)
     private void commandMove() {
         //move when pressing space
-        if (Input.GetKeyDown(KeyCode.Space) && !moving) {
-            moving = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && moving && numberOfJumps == 1) {
+        if (Input.GetKeyDown(KeyCode.Space) && !moving && !jump && (timesJumped < totalJumps)) {
             jump = true;
+            moving = true;
+            timesJumped = timesJumped + 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && moving && !jump && (timesJumped < totalJumps)) {
+            jump = true;
+            timesJumped = timesJumped + 1;
 
         }
-        if (jump && !timerBool) {
+        if (jump) {
             if (timer > 0) {
                 timer -= Time.deltaTime;
                 if (timer <= 0) {
-                    timerBool = true;
+                    jump = false;
+                    timer = 0.1f;
                 }
             }
         }
@@ -103,25 +108,18 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         //when move is true, fly in one direction
-        if (moving && numberOfJumps == 0) {
+        if (moving && timesJumped == 0) {
             body.WakeUp();
             addForceToBody();
-            numberOfJumps = 1;
         }
 
         //if player is already moving, change direction
-        if (moving && numberOfJumps == 1 && jump) {
+        if (moving && jump) {
             body.Sleep();
             if (body.IsSleeping()) {
                 body.WakeUp();
                 if (body.IsAwake()) {
                     addForceToBody();
-                    if (timerBool) {
-                        jump = false;
-                        timerBool = false;
-                        numberOfJumps = 2;
-                        timer = 0.01f;
-                    }
                 }
             }
         }
@@ -130,7 +128,7 @@ public class PlayerMovement : MonoBehaviour {
         if (wallCollision) {
             jump = false;
             moving = false;
-            numberOfJumps = 0;
+            timesJumped = 0;
             body.Sleep();
         }
 
