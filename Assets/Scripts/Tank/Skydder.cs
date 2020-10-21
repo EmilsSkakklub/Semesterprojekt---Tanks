@@ -9,9 +9,9 @@ public class Skydder : MonoBehaviour {
     public GameObject Projectile;
     public GameObject BigBoy;
     public PickUp pu;
+    public PlayerMovement pm;
 
 
-    public float attackSpeed = 0.5f;
     public float projectileSpeed = 500;
     public float BigBoySpeed = 300;
 
@@ -22,7 +22,7 @@ public class Skydder : MonoBehaviour {
 
 
     void Update() {
-        if (Input.GetKey(KeyCode.Q) && !onCoolDown) {
+        if (pm.ButtonShoot && !onCoolDown) {
             Fire();
             ssc.StartShake(ssc.length,ssc.power);
         }

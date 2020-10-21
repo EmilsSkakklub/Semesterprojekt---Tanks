@@ -4,7 +4,7 @@ using System.IO.Compression;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement2 : MonoBehaviour {
     public Rigidbody2D body;
     public GameObject indicator1, indicator2;
 
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour {
     void Start() {
         //remove gravity of the player
         Physics2D.gravity = Vector2.zero;
-        
+
     }
 
     // Update is called once per frame
@@ -145,35 +145,35 @@ public class PlayerMovement : MonoBehaviour {
 
     }
     private void buttonSettings() {
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.LeftArrow)) {
             ButtonLeftTurn = true;
         } else {
             ButtonLeftTurn = false;
         }
 
 
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.RightArrow)) {
             ButtonRightTurn = true;
         } else {
             ButtonRightTurn = false;
         }
 
 
-        if (Input.GetKeyDown(KeyCode.W)) {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
             ButtonChangeGravity = true;
         } else {
             ButtonChangeGravity = false;
         }
 
 
-        if (Input.GetKeyDown(KeyCode.C)) {
+        if (Input.GetKeyDown(KeyCode.Comma)) {
             ButtonJump = true;
         } else {
             ButtonJump = false;
         }
 
 
-        if (Input.GetKey(KeyCode.V)) {
+        if (Input.GetKey(KeyCode.Period)) {
             ButtonShoot = true;
         } else {
             ButtonShoot = false;

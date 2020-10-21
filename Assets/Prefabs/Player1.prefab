@@ -47,12 +47,12 @@ MonoBehaviour:
   Projectile: {fileID: 2386720261022611104, guid: a8670ddb6c983bb49b69d6e08fc95c4b, type: 3}
   BigBoy: {fileID: 3166402795608650637, guid: 9ec8affb613a6b54e9a97f3fe8a83e18, type: 3}
   pu: {fileID: 1123115395}
-  attackSpeed: 0.5
+  pm: {fileID: 7674806845619064777}
   projectileSpeed: 500
   BigBoySpeed: 300
   BigBoyInAir: 0
   onCoolDown: 0
-  coolDownTime: 1
+  coolDownTime: 0.5
 --- !u!1 &7674806844601493043
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,7 +81,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7674806844601493043}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.45, y: -0.017000198, z: -1}
+  m_LocalPosition: {x: 0.45, y: -0.017000198, z: -0.2790001}
   m_LocalScale: {x: 0.27985293, y: 0.122117646, z: 0.8141176}
   m_Children: []
   m_Father: {fileID: 7674806845619064776}
@@ -172,7 +172,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.3269161, y: -0.0072648465}
+  m_ConnectedAnchor: {x: 0.3269159, y: -0.0072647966}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &7674806845619064823
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 7674806845619064776}
   - component: {fileID: 7674806845619064777}
   m_Layer: 0
-  m_Name: Tank
+  m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,13 +228,19 @@ MonoBehaviour:
   indicator2: {fileID: 7674806845940637149}
   rotationSpeed: 25
   maxVelocity: 7
-  numberOfJumps: 0
+  timesJumped: 0
+  totalJumps: 3
   moving: 0
   jump: 0
   gravityChanged: 0
   wallCollision: 0
   timerBool: 0
-  timer: 0.01
+  timer: 0.025
+  ButtonLeftTurn: 0
+  ButtonRightTurn: 0
+  ButtonShoot: 0
+  ButtonJump: 0
+  ButtonChangeGravity: 0
 --- !u!1 &7674806845743089715
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +478,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7674806845940637149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.46, y: -0.017000198, z: -1}
+  m_LocalPosition: {x: -0.46, y: -0.017000198, z: -0.279}
   m_LocalScale: {x: 0.27985293, y: 0.122117646, z: 0.8141176}
   m_Children: []
   m_Father: {fileID: 7674806845619064776}
@@ -563,7 +569,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.3341809, y: -0.0072648465}
+  m_ConnectedAnchor: {x: -0.33418095, y: -0.0072647966}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &7674806846134307872
@@ -595,7 +601,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7674806846134307872}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.007000208, z: -1}
+  m_LocalPosition: {x: 0, y: -0.007000208, z: -0.644}
   m_LocalScale: {x: 0.46729, y: 0.46729, z: 0.46729}
   m_Children: []
   m_Father: {fileID: 7674806845619064776}
@@ -686,7 +692,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.47700024}
+  m_ConnectedAnchor: {x: 0, y: -0.47700018}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!247 &7674806846134307878
@@ -727,7 +733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7674806846408532153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.47, z: -1}
+  m_LocalPosition: {x: 0, y: 0.47, z: -0.64400005}
   m_LocalScale: {x: 0.21250004, y: 1, z: 0.16760546}
   m_Children:
   - {fileID: 1312563290}

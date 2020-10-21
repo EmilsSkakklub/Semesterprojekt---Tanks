@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collider : MonoBehaviour
-{
+public class Collider2 : MonoBehaviour {
 
     public float timer = 0.2f;
-    public PlayerMovement    pm;
+    public PlayerMovement2 pm;
 
 
 
