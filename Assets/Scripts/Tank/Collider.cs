@@ -5,7 +5,7 @@ using UnityEngine;
 public class Collider : MonoBehaviour
 {
 
-    public float timer = 0.2f;
+    public float timer = 0.025f;
     public PlayerMovement    pm;
 
 
@@ -26,7 +26,7 @@ public class Collider : MonoBehaviour
     //Check if player no longer has collision with ground
     void OnCollisionExit2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Wall")) {
-            timer = 0.2f;
+            timer = 0.025f;
             pm.wallCollision = false;
         }
     }

@@ -398,6 +398,7 @@ MonoBehaviour:
   PlayerHp: 3
   BulletDmg: 1
   BombDmg: 3
+  pinkIsDead: 0
 --- !u!114 &5433629028399849359
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,9 +33,9 @@ public class Skydder2 : MonoBehaviour {
     }
     void Fire() {
         if (pu.Bombs > 0) {
-            GameObject bullet = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
+            GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
 
-            bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * BigBoySpeed);
+            bomb.GetComponent<Rigidbody2D>().AddForce(transform.up * BigBoySpeed);
             onCoolDown = true;
             Invoke("coolDown", coolDownTime);
             pu.Bombs--;

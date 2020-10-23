@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHitPoints : MonoBehaviour
-{
-    public GameObject tank;
-    public Skydder skydder;
+public class PlayerHitPoints2 : MonoBehaviour {
+
+    public GameObject Player2;
+    public Skydder2 skydder;
+    public EnablePinkWin pinkWin;
 
     public float PlayerHp = 3f;
     public float BulletDmg = 1f;
     public float BombDmg = 3f;
-    
 
-    void Update()
+
+    void Update() 
     {
         if (PlayerHp <= 0) 
         {
             skydder.BigBoyInAir = false;
-            tank.SetActive(false);
+            pinkWin.gameObject.SetActive(true);
+            Player2.SetActive(false);
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {

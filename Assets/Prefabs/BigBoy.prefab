@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2824641724330734687}
   - component: {fileID: 7295369130757131875}
-  - component: {fileID: 1320386826206302283}
+  - component: {fileID: -2490009161051011354}
   m_Layer: 0
   m_Name: BigBoy
   m_TagString: Bomb
@@ -57,7 +57,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1320386826206302283
+--- !u!114 &-2490009161051011354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3166402795608650637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df89292f0371be44a43e915bcb70b2b, type: 3}
+  m_Script: {fileID: 11500000, guid: d1f26e4eea77e2b4f86ca11339f59b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4696795847238201000
