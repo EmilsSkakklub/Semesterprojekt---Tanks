@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7132121837133331462}
   - component: {fileID: 8246893911813827850}
   - component: {fileID: 1201634800314653988}
-  - component: {fileID: 1928790747889670232}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Bullet
@@ -82,32 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!61 &1928790747889670232
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432855643121696307}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.00000005960466, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.0000004, y: 2.0000007}
-  m_EdgeRadius: 0
 --- !u!1 &2386720261022611104
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +92,7 @@ GameObject:
   - component: {fileID: 4689287998962505118}
   - component: {fileID: 5207857303495522046}
   - component: {fileID: 6565610106242191363}
+  - component: {fileID: 8708144918259895779}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -179,6 +153,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df89292f0371be44a43e915bcb70b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &8708144918259895779
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2386720261022611104}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.03}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.39, y: 0.88}
+  m_EdgeRadius: 0
 --- !u!1 &3913899843675956600
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 8483013543866906088}
   - component: {fileID: 4205203222264473818}
   - component: {fileID: 6294270475986271824}
-  - component: {fileID: 2651846066289587081}
   m_Layer: 0
   m_Name: Cylinder (4)
   m_TagString: Bullet
@@ -261,32 +260,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!61 &2651846066289587081
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3913899843675956600}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0000004172325, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.0000004, y: 2.0000007}
-  m_EdgeRadius: 0
 --- !u!1 &7393508866380850905
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +271,6 @@ GameObject:
   - component: {fileID: 8479007673333297353}
   - component: {fileID: 2223410225906875646}
   - component: {fileID: 3442790088177320849}
-  - component: {fileID: 8469568516980912242}
   m_Layer: 0
   m_Name: Cylinder (5)
   m_TagString: Bullet
@@ -369,32 +341,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!61 &8469568516980912242
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7393508866380850905}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0000004172325, y: 2.7105054e-20}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.0000004, y: 2.0000007}
-  m_EdgeRadius: 0
 --- !u!1 &7905011949426846312
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +444,6 @@ GameObject:
   - component: {fileID: 8970244831175616097}
   - component: {fileID: 6916709143298971599}
   - component: {fileID: 6114865564002638721}
-  - component: {fileID: 2944661166110430465}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Bullet
@@ -569,32 +514,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!61 &2944661166110430465
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8956715372867427740}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.33, y: -0.00000047683716}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.69, y: 1.03}
-  m_EdgeRadius: 0
 --- !u!1 &9075614264270521693
 GameObject:
   m_ObjectHideFlags: 0

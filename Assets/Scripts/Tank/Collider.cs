@@ -21,11 +21,24 @@ public class Collider : MonoBehaviour
                 }
             }
         }
+        if (collision.gameObject.CompareTag("Box")) {
+            if (timer > 0) {
+                pm.wallCollision = true;
+                timer -= Time.deltaTime;
+                if (timer <= 0) {
+                    pm.wallCollision = false;
+                }
+            }
+        }
     }
 
     //Check if player no longer has collision with ground
     void OnCollisionExit2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Wall")) {
+            timer = 0.025f;
+            pm.wallCollision = false;
+        }
+        if (collision.gameObject.CompareTag("Box")) {
             timer = 0.025f;
             pm.wallCollision = false;
         }
