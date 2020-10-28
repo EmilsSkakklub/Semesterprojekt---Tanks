@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1282673380681109828}
   - component: {fileID: 8844128455930486131}
   - component: {fileID: 5449561650648900124}
+  - component: {fileID: 6981596029256480070}
   m_Layer: 0
   m_Name: Cylinder (5)
   m_TagString: Bullet
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6981596029256480070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215188782739851092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e954fd8a14a541ac7639513fbf682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 4574038405130269070}
 --- !u!1 &1741521997953006609
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +106,7 @@ GameObject:
   - component: {fileID: 1737037122160740332}
   - component: {fileID: 4294906252695664194}
   - component: {fileID: 3511640027684289036}
+  - component: {fileID: 83901196094757940}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Bullet
@@ -162,6 +177,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &83901196094757940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741521997953006609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e954fd8a14a541ac7639513fbf682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 4574038405130269070}
 --- !u!1 &5005981077604767533
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df89292f0371be44a43e915bcb70b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 3179966345232602995}
+  numberOfBounces: 3
+  disableObject: 0
 --- !u!61 &2071109923937086574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -270,6 +301,7 @@ GameObject:
   - component: {fileID: 1287523672873817189}
   - component: {fileID: 6790414652064500055}
   - component: {fileID: 3692452020967219165}
+  - component: {fileID: 5214672338949066014}
   m_Layer: 0
   m_Name: Cylinder (4)
   m_TagString: Bullet
@@ -340,6 +372,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5214672338949066014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924330284006524149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e954fd8a14a541ac7639513fbf682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 4574038405130269070}
 --- !u!1 &8612292848829718462
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +396,7 @@ GameObject:
   - component: {fileID: 476791324749340043}
   - component: {fileID: 1591281927119293575}
   - component: {fileID: 8415701929510829225}
+  - component: {fileID: 4096282485128168384}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Bullet
@@ -421,6 +467,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4096282485128168384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8612292848829718462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e954fd8a14a541ac7639513fbf682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 4574038405130269070}
 --- !u!1001 &1738428876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -471,10 +530,6 @@ PrefabInstance:
     - target: {fileID: 5761235287833939342, guid: 82e244f92669ac446b3a44e056b83cd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5761235287833939345, guid: 82e244f92669ac446b3a44e056b83cd1, type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 5761235287833939347, guid: 82e244f92669ac446b3a44e056b83cd1, type: 3}
       propertyPath: m_Name

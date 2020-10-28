@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7132121837133331462}
   - component: {fileID: 8246893911813827850}
   - component: {fileID: 1201634800314653988}
+  - component: {fileID: 2849918618123340120}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Bullet
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2849918618123340120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432855643121696307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e954fd8a14a541ac7639513fbf682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 6565610106242191363}
 --- !u!1 &2386720261022611104
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df89292f0371be44a43e915bcb70b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 5207857303495522046}
+  numberOfBounces: 3
+  disableObject: 0
 --- !u!61 &8708144918259895779
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,6 +206,7 @@ GameObject:
   - component: {fileID: 8483013543866906088}
   - component: {fileID: 4205203222264473818}
   - component: {fileID: 6294270475986271824}
+  - component: {fileID: 1595678470292792481}
   m_Layer: 0
   m_Name: Cylinder (4)
   m_TagString: Bullet
@@ -259,6 +277,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1595678470292792481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3913899843675956600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e954fd8a14a541ac7639513fbf682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 6565610106242191363}
 --- !u!1 &7393508866380850905
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +301,7 @@ GameObject:
   - component: {fileID: 8479007673333297353}
   - component: {fileID: 2223410225906875646}
   - component: {fileID: 3442790088177320849}
+  - component: {fileID: 993482505277705915}
   m_Layer: 0
   m_Name: Cylinder (5)
   m_TagString: Bullet
@@ -340,6 +372,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &993482505277705915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393508866380850905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e954fd8a14a541ac7639513fbf682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 6565610106242191363}
 --- !u!1 &8956715372867427740
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +396,7 @@ GameObject:
   - component: {fileID: 8970244831175616097}
   - component: {fileID: 6916709143298971599}
   - component: {fileID: 6114865564002638721}
+  - component: {fileID: 7645003576519286294}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Bullet
@@ -421,6 +467,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7645003576519286294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956715372867427740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e954fd8a14a541ac7639513fbf682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 6565610106242191363}
 --- !u!1001 &1967903559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -431,66 +490,6 @@ PrefabInstance:
     - target: {fileID: 1127219282407708480, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
       propertyPath: m_Name
       value: Particle System Blue
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.ctime1
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.separateAxes
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
-      value: 0.43243217
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127219282407708482, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outWeight
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1127219282407708509, guid: fbd4b5707345dc441aae1eb710f306f0, type: 3}
       propertyPath: m_LocalPosition.x

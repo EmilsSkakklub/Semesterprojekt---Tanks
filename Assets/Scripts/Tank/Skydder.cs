@@ -40,32 +40,32 @@ public class Skydder : MonoBehaviour {
     void Fire() {
         //normal
         if(pu.Bombs > 0) {
-            BombShoot();
+            BombMode();
         }
 
 
         //burst
         else if (pu.burstFire)
         {
-            BurstShoot();
+            BurstMode();
         }
 
 
         //shotgun 
         else if (pu.shotgunFire)
         {
-            ShotgunShoot();
+            ShotgunMode();
         }
 
 
         //shooting bomb
         else {
-            NormalShoot();
+            NormalMode();
         }    
     }
 
 
-    private void NormalShoot() {
+    private void NormalMode() {
         spawnBullet();
         onCoolDown = true;
         Invoke("coolDown", coolDownTime);
@@ -74,7 +74,7 @@ public class Skydder : MonoBehaviour {
 
 
 
-    private void BombShoot() {
+    private void BombMode() {
         GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
             bomb.GetComponent<Rigidbody2D>().AddForce(transform.up* BigBoySpeed);
 
@@ -84,23 +84,25 @@ public class Skydder : MonoBehaviour {
     }
 
 
+    private void BurstMode() {
+        int i = 0;
+        float timeBetweenShots = 0;
 
+        while (i < BurstAmount) {
+            Invoke("spawnBullet", timeBetweenShots);
+            i++;
+            timeBetweenShots += 0.1f;
+        }
 
-
-    private void BurstShoot() {
-        Invoke("spawnBullet", 0.0f);
-        Invoke("spawnBullet", 0.1f);
-        Invoke("spawnBullet", 0.2f);
-        Invoke("spawnBullet", 0.3f);
-        Invoke("spawnBullet", 0.4f);
         onCoolDown = true;
         Invoke("coolDown", coolDownTimeBurst);
     }
 
 
-    private void ShotgunShoot() {
+    private void ShotgunMode() {
         //some shotgun code here
     }
+
 
 
 
