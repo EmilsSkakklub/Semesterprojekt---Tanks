@@ -12,7 +12,7 @@ public class Skydder : MonoBehaviour {
     public PlayerMovement pm;
 
 
-    public float projectileSpeed = 2000f;
+    public float projectileSpeed = 500f;
     public float BigBoySpeed = 300f;
 
     public bool BigBoyInAir = false;

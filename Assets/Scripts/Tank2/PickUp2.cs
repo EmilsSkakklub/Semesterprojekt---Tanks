@@ -5,22 +5,25 @@ using UnityEngine;
 public class PickUp2 : MonoBehaviour {
     public PlayerMovement2 tank;
 
-    public bool TakenBoost;
+    public bool TakenBoost;                     //is true if a certain boost has been picked up
 
-    public float SpeedUpAmount = 3;
-    public float RotationSpeedUpAmount = 3f;
+    public float SpeedUpAmount = 3f;             //amount the players velocity speeds up when picking up 'speed up'
+    public float RotationSpeedUpAmount = 3f;    //amount the players rotation speeds up when picking up 'speed up'
 
-    public float SpeedDownAmount = 3f;
-    public float RotationSpeedDownAmount = 3f;
+    public float SpeedDownAmount = 3f;          //amount the players velocity speeds dpwn when picking up 'speed down'
+    public float RotationSpeedDownAmount = 3f;  //amount the players rotation speeds down when picking up 'speed down'
 
-    public float SpeedUpTime = 10;
-    public float SpeedDownTime = 10;
+    public float SpeedUpTime = 10f;             //timer for speed up pick up
+    public float SpeedDownTime = 10f;           //timer for speed down pick up
+    public float BurstTime = 10f;               //timer for burst pick up
 
-    public float Bombs = 0;
+    public int Bombs = 0;                       //indicates number of nukes a player has
 
-    private float OriginalSpeed;
-    private float OriginalRotationSpeed;
+    public bool burstFire = false;              //if true, player shoots a burst of bullets when firing
+    public bool shotgunFire = false;
 
+    private float OriginalSpeed;                //the original velocity of the player
+    private float OriginalRotationSpeed;        //the original rotation speed of the player
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "SpeedUp" && !TakenBoost) {
@@ -35,6 +38,15 @@ public class PickUp2 : MonoBehaviour {
 
             Debug.Log("bomb aquired");
             Bombs++;
+            Destroy(other.gameObject);
+        } 
+        else if (other.gameObject.tag == "Burst") {
+            Debug.Log("Burst aquired");
+            Burst();
+            Destroy(other.gameObject);
+        } else if (other.gameObject.tag == "Shotgun") {
+            Debug.Log("Shotgun aquired");
+            Shotgun();
             Destroy(other.gameObject);
         }
     }
@@ -60,6 +72,15 @@ public class PickUp2 : MonoBehaviour {
         tank.rotationSpeed = OriginalRotationSpeed;
         TakenBoost = false;
     }
-
+    private void Burst() {
+        burstFire = true;
+        Invoke("ShootNormal", BurstTime);
+    }
+    private void ShootNormal() {
+        burstFire = false;
+    }
+    private void Shotgun() {
+        shotgunFire = true;
+    }
 
 }
