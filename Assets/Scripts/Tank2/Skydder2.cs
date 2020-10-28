@@ -34,42 +34,79 @@ public class Skydder2 : MonoBehaviour {
         }
     }
     void Fire() {
+        //normal
         if (pu.Bombs > 0) {
-            GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
-
-            bomb.GetComponent<Rigidbody2D>().AddForce(transform.up * BigBoySpeed);
-            onCoolDown = true;
-            Invoke("coolDown", coolDownTime);
-            pu.Bombs--;
+            BombShoot();
         }
+
+
         //burst
         else if (pu.burstFire) {
-            Invoke("spawnBullet", 0.0f);
-            Invoke("spawnBullet", 0.1f);
-            Invoke("spawnBullet", 0.2f);
-            Invoke("spawnBullet", 0.3f);
-            Invoke("spawnBullet", 0.4f);
-            onCoolDown = true;
-            Invoke("coolDown", coolDownTimeBurst);
-
+            BurstShoot();
         }
+
+
         //shotgun 
         else if (pu.shotgunFire) {
-            //some code LOL
-        } 
-        //shooting normally
-        else {
-            GameObject bullet = Instantiate(Projectile, transform.position, gameObject.transform.rotation) as GameObject;
-
-            bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileSpeed);
-            onCoolDown = true;
-            Invoke("coolDown", coolDownTime);
+            ShotgunShoot();
         }
 
+
+        //shooting bomb
+        else {
+            NormalShoot();
+        }
     }
+
+
+    private void NormalShoot() {
+        spawnBullet();
+        onCoolDown = true;
+        Invoke("coolDown", coolDownTime);
+    }
+
+
+
+
+    private void BombShoot() {
+        GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
+        bomb.GetComponent<Rigidbody2D>().AddForce(transform.up * BigBoySpeed);
+
+        onCoolDown = true;
+        Invoke("coolDown", coolDownTime);
+        pu.Bombs--;
+    }
+
+
+
+
+
+    private void BurstShoot() {
+        Invoke("spawnBullet", 0.0f);
+        Invoke("spawnBullet", 0.1f);
+        Invoke("spawnBullet", 0.2f);
+        Invoke("spawnBullet", 0.3f);
+        Invoke("spawnBullet", 0.4f);
+        onCoolDown = true;
+        Invoke("coolDown", coolDownTimeBurst);
+    }
+
+
+    private void ShotgunShoot() {
+        //some shotgun code here
+    }
+
+
+
+
+
+
+    //shooting cooldown
     private void coolDown() {
         onCoolDown = false;
     }
+
+    //spawn a bullet, and give it a velocity and direction
     private void spawnBullet() {
         GameObject bullet = Instantiate(Projectile, transform.position, gameObject.transform.rotation) as GameObject;
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileSpeed);

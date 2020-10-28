@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
+using Unity.Profiling;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,6 +13,7 @@ public class Skydder : MonoBehaviour {
     public PickUp pu;
     public PlayerMovement pm;
 
+    public int BurstAmount = 5;
 
     public float projectileSpeed = 500f;
     public float BigBoySpeed = 300f;
@@ -35,46 +38,79 @@ public class Skydder : MonoBehaviour {
         }
     }
     void Fire() {
-        //nuke
+        //normal
         if(pu.Bombs > 0) {
-            GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
-            bomb.GetComponent<Rigidbody2D>().AddForce(transform.up * BigBoySpeed);
-
-            onCoolDown = true;
-            Invoke("coolDown", coolDownTime);
-            pu.Bombs--;
+            BombShoot();
         }
+
+
         //burst
         else if (pu.burstFire)
         {
-            Invoke("spawnBullet", 0.0f);
-            Invoke("spawnBullet", 0.1f);
-            Invoke("spawnBullet", 0.2f);
-            Invoke("spawnBullet", 0.3f);
-            Invoke("spawnBullet", 0.4f);
-            onCoolDown = true;
-            Invoke("coolDown", coolDownTimeBurst);
-
+            BurstShoot();
         }
+
+
         //shotgun 
         else if (pu.shotgunFire)
         {
-            //some code LOL
+            ShotgunShoot();
         }
-        //shooting noramlly
+
+
+        //shooting bomb
         else {
-            spawnBullet();
-            onCoolDown = true;
-            Invoke("coolDown", coolDownTime);
+            NormalShoot();
         }    
     }
+
+
+    private void NormalShoot() {
+        spawnBullet();
+        onCoolDown = true;
+        Invoke("coolDown", coolDownTime);
+    }
+
+
+
+
+    private void BombShoot() {
+        GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
+            bomb.GetComponent<Rigidbody2D>().AddForce(transform.up* BigBoySpeed);
+
+    onCoolDown = true;
+    Invoke("coolDown", coolDownTime);
+    pu.Bombs--;
+    }
+
+
+
+
+
+    private void BurstShoot() {
+        Invoke("spawnBullet", 0.0f);
+        Invoke("spawnBullet", 0.1f);
+        Invoke("spawnBullet", 0.2f);
+        Invoke("spawnBullet", 0.3f);
+        Invoke("spawnBullet", 0.4f);
+        onCoolDown = true;
+        Invoke("coolDown", coolDownTimeBurst);
+    }
+
+
+    private void ShotgunShoot() {
+        //some shotgun code here
+    }
+
+
+
+
+
 
     //shooting cooldown
     private void coolDown(){
         onCoolDown = false;
     }
-
-
 
     //spawn a bullet, and give it a velocity and direction
     private void spawnBullet()

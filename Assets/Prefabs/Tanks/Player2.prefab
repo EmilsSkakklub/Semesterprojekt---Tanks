@@ -224,7 +224,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.47700024}
+  m_ConnectedAnchor: {x: 0.00000203357, y: -0.47700042}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!247 &2363142808201636650
@@ -252,10 +252,10 @@ GameObject:
   - component: {fileID: 2363142808458637114}
   - component: {fileID: 2363142808458637113}
   - component: {fileID: 2363142808458637115}
-  - component: {fileID: 5353080063170319011}
   - component: {fileID: 5433629028399849359}
   - component: {fileID: 5353080063629635708}
   - component: {fileID: 5353080063629635711}
+  - component: {fileID: 1892217910}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -381,24 +381,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &5353080063170319011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363142808458637119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46dbacdef7d86744286decaf9e360c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tank: {fileID: 2363142808852670715}
-  skydder: {fileID: 1312563292, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
-  PlayerHp: 3
-  BulletDmg: 1
-  BombDmg: 3
-  pinkIsDead: 0
 --- !u!114 &5433629028399849359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06dfb4aed3fad34c91685bdfd8ebb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0.2
+  timer: 0.025
   pm: {fileID: 5353080062960051142}
 --- !u!114 &5353080063629635711
 MonoBehaviour:
@@ -447,7 +429,28 @@ MonoBehaviour:
   RotationSpeedDownAmount: 3
   SpeedUpTime: 10
   SpeedDownTime: 10
+  BurstTime: 10
   Bombs: 0
+  burstFire: 0
+  shotgunFire: 0
+--- !u!114 &1892217910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363142808458637119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0070670da294dff43b212d19a415e94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player2: {fileID: 2363142808852670715}
+  skydder: {fileID: 5353080063636157039}
+  pinkWin: {fileID: 0}
+  PlayerHp: 3
+  BulletDmg: 1
+  BombDmg: 3
 --- !u!1 &2363142808664406737
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +570,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.33418095, y: -0.0072648465}
+  m_ConnectedAnchor: {x: -0.33418125, y: -0.0072645894}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &2363142808852670715
@@ -596,7 +599,7 @@ Transform:
   m_GameObject: {fileID: 2363142808852670715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.715916, y: -7.2655444, z: 0}
-  m_LocalScale: {x: 1.7424, y: 1.7424, z: 1.7424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2363142808201636653}
   - {fileID: 2363142807928457142}
@@ -755,7 +758,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.3269163, y: -0.0072648465}
+  m_ConnectedAnchor: {x: 0.32691595, y: -0.0072647627}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &5353080063611815765
@@ -806,8 +809,9 @@ MonoBehaviour:
   BigBoy: {fileID: 3166402795608650637, guid: 9ec8affb613a6b54e9a97f3fe8a83e18, type: 3}
   pu: {fileID: 5353080063629635711}
   pm: {fileID: 5353080062960051142}
-  projectileSpeed: 500
+  projectileSpeed: 1000
   BigBoySpeed: 300
   BigBoyInAir: 0
   onCoolDown: 0
   coolDownTime: 1
+  coolDownTimeBurst: 1

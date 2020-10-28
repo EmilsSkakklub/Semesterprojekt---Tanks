@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312563289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4977, z: -25.198994}
+  m_LocalPosition: {x: 0, y: 0.497, z: -25.198994}
   m_LocalScale: {x: 2.7008045, y: 0.57392097, z: 3.424238}
   m_Children: []
   m_Father: {fileID: 7674806846408532154}
@@ -44,15 +44,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ssc: {fileID: 0}
-  Projectile: {fileID: 2386720261022611104, guid: a8670ddb6c983bb49b69d6e08fc95c4b, type: 3}
+  Projectile: {fileID: 5005981077604767533, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
   BigBoy: {fileID: 3166402795608650637, guid: 9ec8affb613a6b54e9a97f3fe8a83e18, type: 3}
   pu: {fileID: 1123115395}
   pm: {fileID: 7674806845619064777}
-  projectileSpeed: 500
+  BurstAmount: 5
+  projectileSpeed: 1000
   BigBoySpeed: 300
   BigBoyInAir: 0
   onCoolDown: 0
   coolDownTime: 0.5
+  coolDownTimeBurst: 1
 --- !u!1 &7674806844601493043
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +174,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.3269159, y: -0.0072647966}
+  m_ConnectedAnchor: {x: 0.3269162, y: -0.0072649796}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &7674806845619064823
@@ -201,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 7674806845619064823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7424, y: 1.7424, z: 1.7424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7674806846134307873}
   - {fileID: 7674806846408532154}
@@ -227,9 +229,9 @@ MonoBehaviour:
   indicator1: {fileID: 7674806844601493043}
   indicator2: {fileID: 7674806845940637149}
   rotationSpeed: 25
-  maxVelocity: 7
+  maxVelocity: 5
   timesJumped: 0
-  totalJumps: 3
+  totalJumps: 1000
   moving: 0
   jump: 0
   gravityChanged: 0
@@ -341,7 +343,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -418,7 +420,10 @@ MonoBehaviour:
   RotationSpeedDownAmount: 5
   SpeedUpTime: 10
   SpeedDownTime: 10
+  BurstTime: 10
   Bombs: 0
+  burstFire: 0
+  shotgunFire: 0
 --- !u!114 &1351415215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,8 +436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46dbacdef7d86744286decaf9e360c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tank: {fileID: 7674806845619064823}
+  Player1: {fileID: 7674806845619064823}
   skydder: {fileID: 1312563292}
+  blueWin: {fileID: 0}
   PlayerHp: 3
   BulletDmg: 1
   BombDmg: 3
@@ -569,7 +575,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.33418095, y: -0.0072647966}
+  m_ConnectedAnchor: {x: -0.33418095, y: -0.0072649256}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &7674806846134307872
@@ -692,7 +698,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.47700018}
+  m_ConnectedAnchor: {x: -0.000002103693, y: -0.47700012}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!247 &7674806846134307878
