@@ -38,7 +38,7 @@ public class Skydder : MonoBehaviour {
         }
     }
     void Fire() {
-        //normal
+        //bomb
         if(pu.Bombs > 0) {
             BombMode();
         }
@@ -58,7 +58,7 @@ public class Skydder : MonoBehaviour {
         }
 
 
-        //shooting bomb
+        //normal
         else {
             NormalMode();
         }    
