@@ -12,6 +12,7 @@ TagManager:
   - BombUp
   - SpawnPoint
   - Box
+  - Burst
   layers:
   - Default
   - TransparentFX
