@@ -65,6 +65,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6733645502175721656}
     m_Modifications:
+    - target: {fileID: 215188782739851092, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741521997953006609, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2698842265855915027, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -125,7 +133,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletPink
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5005981077604767533, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924330284006524149, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612292848829718462, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3179966345232602995, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+    - {fileID: 4574038405130269070, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+    - {fileID: 2071109923937086574, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+    - {fileID: 83901196094757940, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+    - {fileID: 5214672338949066014, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+    - {fileID: 6981596029256480070, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
+    - {fileID: 4096282485128168384, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
 --- !u!4 &3611211331645297904 stripped
 Transform:
