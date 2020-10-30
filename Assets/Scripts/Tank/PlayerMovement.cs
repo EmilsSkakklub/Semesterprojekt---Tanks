@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO.Compression;
 using UnityEditor.Experimental.GraphView;
@@ -28,7 +29,6 @@ public class PlayerMovement : MonoBehaviour {
     public bool ButtonJump = false;
     public bool ButtonChangeGravity = false;
 
-
     // Start is called before the first frame update
     void Start() {
         //remove gravity of the player
@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour {
     private void FixedUpdate() {
         rotate();
         move();
+
+        
     }
 
 

@@ -30,16 +30,12 @@ public class TwoPlayerTarget : MonoBehaviour{
     public PlayerHitPoints2 php2;
     public Transform body2;
 
-    /*
-    public float xPlayer1min = 2f;
-    public float xPlayer1max = 2f;
-    public float yPlayer1min = 2f;
-    public float yPlayer1max = 2f;
-    public float xPlayer2min = 2f;
-    public float xPlayer2max = 2f;
-    public float yPlayer2min = 2f;
-    public float yPlayer2max = 2f;
-    */
+    public Transform GlobalCoordPlayer1;
+    public Transform GlobalCoordPlayer2;
+
+    public float distance;
+    public float maxDistance = 12;
+    public float differenceX = 2;
 
     void Start()
     {
@@ -64,19 +60,24 @@ public class TwoPlayerTarget : MonoBehaviour{
 
         Move();
         Zoom();
+        StopAtBoundaries();
 
-        if (bothPlayersAlive) {
-            StopAtBoundaries();
-        } else {
-            smoothTime = smoothTime*0.99f;
-        }
-        
     }
 
     void Zoom()
     {
         float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimiter);
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
+
+
+
+        distance = Vector3.Distance(GlobalCoordPlayer1.position, GlobalCoordPlayer2.position); //Finds the distance between the players
+        if (Mathf.Abs(GlobalCoordPlayer1.position.x) - Mathf.Abs(GlobalCoordPlayer2.position.x) <= differenceX && distance >= maxDistance || //if the distance between the players is long enough and theyre above each other, zoom out.
+            Mathf.Abs(GlobalCoordPlayer2.position.x) - Mathf.Abs(GlobalCoordPlayer1.position.x) <= differenceX && distance >= maxDistance) {
+            zoomLimiter = 0.1f;
+        } else {
+            zoomLimiter = 12f; //if not, be normal
+        }
     }
 
     void Move()
@@ -115,30 +116,23 @@ public class TwoPlayerTarget : MonoBehaviour{
 
     }
     void StopAtBoundaries() {
+        if (bothPlayersAlive) {
+            // X axis
+            if (transform.position.x <= minX) {
+                transform.position = new Vector3(minX, transform.position.y, offset.z);
+            } else if (transform.position.x >= maxX) {
+                transform.position = new Vector3(maxX, transform.position.y, offset.z);
+            }
 
-        // X axis
-        if (transform.position.x <= minX) {
-            transform.position = new Vector3(minX, transform.position.y, offset.z);
-        } else if (transform.position.x >= maxX) {
-            transform.position = new Vector3(maxX, transform.position.y, offset.z);
-        }
-
-        // Y axis
-        if (transform.position.y <= minY) {
-            transform.position = new Vector3(transform.position.x, minY, offset.z);
-        } else if (transform.position.y >= maxY) {
-            transform.position = new Vector3(transform.position.x, maxY, offset.z);
-        }
-
-        /*if (targets[0].position.x > xPlayer1min && targets[0].position.x < xPlayer1max && 
-            targets[0].position.y > yPlayer1min && targets[0].position.y < yPlayer1max && 
-
-            targets[1].position.x > xPlayer2min && targets[1].position.x < xPlayer2max &&
-            targets[1].position.x > yPlayer2min && targets[1].position.x < yPlayer2max) {
-
-            zoomLimiter = fixedZoomLimiter;
+            // Y axis
+            if (transform.position.y <= minY) {
+                transform.position = new Vector3(transform.position.x, minY, offset.z);
+            } else if (transform.position.y >= maxY) {
+                transform.position = new Vector3(transform.position.x, maxY, offset.z);
+            }
         } else {
-            zoomLimiter = 11f;
-        }*/
+            smoothTime = smoothTime * 0.99f;
+        }
+        
     }
 }
