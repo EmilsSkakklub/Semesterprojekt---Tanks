@@ -174,7 +174,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.3269162, y: -0.0072649796}
+  m_ConnectedAnchor: {x: 0.32691583, y: -0.007264946}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &7674806845619064823
@@ -575,7 +575,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.33418095, y: -0.0072649256}
+  m_ConnectedAnchor: {x: -0.3341809, y: -0.007264697}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &7674806846134307872
@@ -698,7 +698,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.000002103693, y: -0.47700012}
+  m_ConnectedAnchor: {x: -0.00000014024619, y: -0.47700018}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!247 &7674806846134307878

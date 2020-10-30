@@ -8,18 +8,23 @@ public class PlayerHitPoints : MonoBehaviour
     public GameObject Player1;
     public Skydder skydder;
     public EnableBlueWin blueWin;
+    public ShowBlueScore sbs;
+    public Score score;
 
     public float PlayerHp = 3f;
     public float BulletDmg = 1f;
     public float BombDmg = 3f;
-    
 
+    private void Start() {
+        score = GameObject.Find("Score").GetComponent<Score>();
+    }
     void Update()
     {
+
         if (PlayerHp <= 0) 
         {
             skydder.BigBoyInAir = false;
-            blueWin.gameObject.SetActive(true);
+            score.blueScore++;
             Player1.SetActive(false);
         }
     }
@@ -31,5 +36,6 @@ public class PlayerHitPoints : MonoBehaviour
             PlayerHp = PlayerHp - BombDmg;
         }
     }
+
 
 }

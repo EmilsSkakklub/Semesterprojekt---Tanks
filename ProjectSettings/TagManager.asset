@@ -13,6 +13,8 @@ TagManager:
   - SpawnPoint
   - Box
   - Burst
+  - Music
+  - Score
   layers:
   - Default
   - TransparentFX

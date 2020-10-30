@@ -13,7 +13,7 @@ public class Restart : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        RestartManually();
+        //RestartManually();
         DeathRestart();
     }
     public void DeathRestart() {
@@ -25,11 +25,11 @@ public class Restart : MonoBehaviour {
             Invoke("RestartGame", 5f);
         }
     }
-    public void RestartManually() {
+    /*public void RestartManually() {
         if (Input.GetKeyDown(KeyCode.R)) {
             Invoke("RestartGame", 0f);
         }
-    }
+    }*/
     public void RestartGame() {
         SceneManager.LoadScene("Map1");
     }

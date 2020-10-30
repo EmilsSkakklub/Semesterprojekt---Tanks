@@ -224,7 +224,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.00000203357, y: -0.47700042}
+  m_ConnectedAnchor: {x: 0.0000016128309, y: -0.47700006}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!247 &2363142808201636650
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 5353080063629635711}
   - component: {fileID: 1892217910}
   m_Layer: 0
-  m_Name: Body
+  m_Name: Body2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +338,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -362,7 +362,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: -0}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!58 &2363142808458637115
@@ -570,7 +570,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.33418125, y: -0.0072645894}
+  m_ConnectedAnchor: {x: -0.33418092, y: -0.0072647505}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &2363142808852670715
@@ -625,9 +625,9 @@ MonoBehaviour:
   indicator1: {fileID: 2363142810003538239}
   indicator2: {fileID: 2363142808664406737}
   rotationSpeed: 25
-  maxVelocity: 7
+  maxVelocity: 5
   timesJumped: 0
-  totalJumps: 3
+  totalJumps: 1000
   moving: 0
   jump: 0
   gravityChanged: 0
@@ -758,7 +758,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.32691595, y: -0.0072647627}
+  m_ConnectedAnchor: {x: 0.3269157, y: -0.0072647505}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &5353080063611815765
