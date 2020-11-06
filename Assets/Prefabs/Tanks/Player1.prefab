@@ -439,6 +439,8 @@ MonoBehaviour:
   Player1: {fileID: 7674806845619064823}
   skydder: {fileID: 1312563292}
   blueWin: {fileID: 0}
+  sbs: {fileID: 0}
+  score: {fileID: 0}
   PlayerHp: 3
   BulletDmg: 1
   BombDmg: 3

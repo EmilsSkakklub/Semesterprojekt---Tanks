@@ -448,6 +448,8 @@ MonoBehaviour:
   Player2: {fileID: 2363142808852670715}
   skydder: {fileID: 5353080063636157039}
   pinkWin: {fileID: 0}
+  sps: {fileID: 0}
+  score: {fileID: 0}
   PlayerHp: 3
   BulletDmg: 1
   BombDmg: 3

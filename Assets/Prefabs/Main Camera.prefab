@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8565677116303514272}
   - component: {fileID: 8565677116303514207}
   - component: {fileID: 960395172746120782}
+  - component: {fileID: 1139615682}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -50,7 +51,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.083828524, g: 0.020558922, b: 0.13207549, a: 0}
+  m_BackGroundColor: {r: 0.09531863, g: 0.0996062, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -67,7 +68,7 @@ Camera:
   far clip plane: 1000
   field of view: 74.5
   orthographic: 1
-  orthographic size: 9.98
+  orthographic size: 9.93
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8565677116303514274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8ed8ea73e6d16241aaed22200cf3370, type: 3}
   m_Name: 
@@ -128,3 +129,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8565677116303514274}
   m_CullTransparentMesh: 0
+--- !u!114 &1139615682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8565677116303514274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65456d17863239b439e6d5ff4204ad55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 0}
+  - {fileID: 0}
+  offset: {x: 0, y: 0, z: -40}
+  smoothTime: 0.5
+  minZoom: 9.93
+  maxZoom: 6
+  zoomLimiter: 12
+  fixedZoomLimiter: 0.1
+  minX: -6.53
+  maxX: 6.53
+  minY: -3.75
+  maxY: 3.75
+  bothPlayersAlive: 1
+  php: {fileID: 0}
+  body: {fileID: 0}
+  php2: {fileID: 0}
+  body2: {fileID: 0}
+  GlobalCoordPlayer1: {fileID: 0}
+  GlobalCoordPlayer2: {fileID: 0}
+  distance: 0
+  maxDistance: 9
+  differenceX: 2

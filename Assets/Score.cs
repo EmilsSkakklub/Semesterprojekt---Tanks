@@ -6,6 +6,7 @@ public class Score : MonoBehaviour {
     public int pinkScore = 0;
     public int blueScore = 0;
     public int scoreMax = 3;
+
     void Awake() {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Score");
 
