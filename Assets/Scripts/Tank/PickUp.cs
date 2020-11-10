@@ -23,6 +23,7 @@ public class PickUp : MonoBehaviour
 
     public bool burstFire = false;              //if true, player shoots a burst of bullets when firing
     public bool shotgunFire = false;
+    public bool laserFire = false;
 
     private float OriginalSpeed;                //the original velocity of the player
     private float OriginalRotationSpeed;        //the original rotation speed of the player
@@ -58,6 +59,12 @@ public class PickUp : MonoBehaviour
         {
             Debug.Log("Shotgun aquired");
             Shotgun();
+            Destroy(other.gameObject);
+        }
+        else if(other.gameObject.tag == "Laser")
+        {
+            Debug.Log("Laser aquired");
+            Laser();
             Destroy(other.gameObject);
         }
     }
@@ -103,5 +110,10 @@ public class PickUp : MonoBehaviour
     private void Shotgun()
     {
         shotgunFire = true;
+    }
+
+    private void Laser()
+    {
+        laserFire = true;
     }
 }

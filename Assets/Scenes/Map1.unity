@@ -540,6 +540,14 @@ PrefabInstance:
       propertyPath: ssc
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 7674806844601493045, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.32691583
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674806844601493045, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.007264946
+      objectReference: {fileID: 0}
     - target: {fileID: 7674806845619064776, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.55
@@ -587,6 +595,18 @@ PrefabInstance:
     - target: {fileID: 7674806845619064823, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674806845940637151, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.007264697
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674806846134307877, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000014024619
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674806846134307877, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.47700018
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}

@@ -13,6 +13,10 @@ public class Skydder : MonoBehaviour {
     public PickUp pu;
     public PlayerMovement pm;
 
+    public PlayerHitPoints2 php2;
+
+    public LineRenderer lr;
+
     public int BurstAmount = 5;
 
     public float projectileSpeed = 500f;
@@ -36,6 +40,9 @@ public class Skydder : MonoBehaviour {
         if (BigBoyInAir == true) {
             ssc.StartShake(ssc.length, ssc.power);
         }
+
+        //Check if laser should render + shake the screen a little
+        checkLaserActive();
     }
     void Fire() {
         //bomb
@@ -55,6 +62,12 @@ public class Skydder : MonoBehaviour {
         else if (pu.shotgunFire)
         {
             ShotgunMode();
+        }
+
+
+        else if (pu.laserFire)
+        {
+            LaserMode();
         }
 
 
@@ -102,6 +115,43 @@ public class Skydder : MonoBehaviour {
     private void ShotgunMode() {
         //some shotgun code here
     }
+
+    private void LaserMode()
+    {
+        lr.SetPosition(0, transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
+        Debug.DrawLine(transform.position, hit.point);
+
+        if (hit.collider.tag == "Wall" || hit.collider.tag == "Player" || hit.collider.tag == "Box" || hit.collider.tag == "SpawnPoint")
+        {
+            lr.SetPosition(1, new Vector3(hit.point.x, hit.point.y, transform.position.z));
+        }
+        else
+        {
+            lr.SetPosition(1, transform.up * 2000);
+        }
+
+        //damage player when hit by laser
+        if(hit.collider.tag == "Player")
+        {
+            php2.PlayerHp = php2.PlayerHp - (1 * Time.deltaTime);
+        }
+    }
+
+
+    private void checkLaserActive()
+    {
+        if(pm.ButtonShoot && pu.laserFire)
+        {
+            ssc.StartShake(0.01f, 0.01f);
+            lr.enabled = true;
+        }
+        else
+        {
+            lr.enabled = false;
+        }
+    }
+        
 
 
 
