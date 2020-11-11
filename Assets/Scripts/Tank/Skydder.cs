@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using Unity.Mathematics;
 using Unity.Profiling;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,9 +14,9 @@ public class Skydder : MonoBehaviour {
     public PickUp pu;
     public PlayerMovement pm;
 
-    public PlayerHitPoints2 php2;
-
     public LineRenderer lr;
+    public ParticleSystem laserParticle;
+    public GameObject laserCollider;
 
     public int BurstAmount = 5;
 
@@ -28,7 +29,19 @@ public class Skydder : MonoBehaviour {
     public float coolDownTime = 0.3f;
     public float coolDownTimeBurst = 1f;
 
+    //laser variables
+    private bool hasTakenDamage = false;
+    public bool takeDamageByLaser = false;
+    public float damageTimer = 0.25f;
+    private float resetDamageTimer;
+    public int laserDamage = 1;
 
+
+
+    private void Start()
+    {
+        resetDamageTimer = damageTimer;
+    }
 
     void Update() {
         //if pressing the shoot button ->> SHOOT
@@ -89,7 +102,7 @@ public class Skydder : MonoBehaviour {
 
     private void BombMode() {
         GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
-            bomb.GetComponent<Rigidbody2D>().AddForce(transform.up* BigBoySpeed);
+        bomb.GetComponent<Rigidbody2D>().AddForce(transform.up* BigBoySpeed);
 
     onCoolDown = true;
     Invoke("coolDown", coolDownTime);
@@ -125,16 +138,12 @@ public class Skydder : MonoBehaviour {
         if (hit.collider.tag == "Wall" || hit.collider.tag == "Player" || hit.collider.tag == "Box" || hit.collider.tag == "SpawnPoint")
         {
             lr.SetPosition(1, new Vector3(hit.point.x, hit.point.y, transform.position.z));
+            Instantiate(laserParticle, hit.point, quaternion.identity);
+            GameObject Lol =  Instantiate(laserCollider, hit.point, quaternion.identity);
         }
         else
         {
             lr.SetPosition(1, transform.up * 2000);
-        }
-
-        //damage player when hit by laser
-        if(hit.collider.tag == "Player")
-        {
-            php2.PlayerHp = php2.PlayerHp - (1 * Time.deltaTime);
         }
     }
 
@@ -143,13 +152,29 @@ public class Skydder : MonoBehaviour {
     {
         if(pm.ButtonShoot && pu.laserFire)
         {
-            ssc.StartShake(0.01f, 0.01f);
+            ssc.StartShake(0.02f, 0.02f);
             lr.enabled = true;
         }
         else
         {
             lr.enabled = false;
         }
+
+        //cooldown for player taking damage by laser
+        if (hasTakenDamage)
+            hasTakenDamage = false;
+            {
+            if (damageTimer > 0)
+            {
+                damageTimer -= Time.deltaTime;
+                if (damageTimer <= 0)
+                {
+                    hasTakenDamage = false;
+                    damageTimer = resetDamageTimer;
+                }
+            }
+        }
+        
     }
         
 

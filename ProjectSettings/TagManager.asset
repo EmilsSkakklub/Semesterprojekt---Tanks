@@ -17,6 +17,7 @@ TagManager:
   - Score
   - MapChange
   - Laser
+  - LaserCollider
   layers:
   - Default
   - TransparentFX

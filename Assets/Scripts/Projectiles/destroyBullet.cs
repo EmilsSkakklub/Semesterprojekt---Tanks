@@ -8,7 +8,6 @@ public class destroyBullet : MonoBehaviour
 {
 
     public Rigidbody2D bullet;
-    private Skydder sk;
 
     public int numberOfBounces = 3;     //amount of times the bullet can bounce of walls before being destroyed
     public bool disableObject = false;  //disables object after hitting wall a number of times

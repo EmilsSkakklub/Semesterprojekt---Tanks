@@ -21,6 +21,7 @@ public class PickUp2 : MonoBehaviour {
 
     public bool burstFire = false;              //if true, player shoots a burst of bullets when firing
     public bool shotgunFire = false;
+    public bool laserFire = false;
 
     private float OriginalSpeed;                //the original velocity of the player
     private float OriginalRotationSpeed;        //the original rotation speed of the player
@@ -30,11 +31,13 @@ public class PickUp2 : MonoBehaviour {
             Debug.Log("UP taken");
             Invoke("IsSpeededUp", 0);
             Destroy(other.gameObject);
-        } else if (other.gameObject.tag == "SpeedDown" && !TakenBoost) {
+        } 
+        else if (other.gameObject.tag == "SpeedDown" && !TakenBoost) {
             Debug.Log("DOWN taken");
             Invoke("IsSlowedDown", 0);
             Destroy(other.gameObject);
-        } else if (other.gameObject.tag == "BombUp") {
+        } 
+        else if (other.gameObject.tag == "BombUp") {
 
             Debug.Log("bomb aquired");
             Bombs++;
@@ -49,6 +52,13 @@ public class PickUp2 : MonoBehaviour {
             Shotgun();
             Destroy(other.gameObject);
         }
+        else if (other.gameObject.tag == "Laser")
+        {
+            Debug.Log("Laser aquired");
+            Laser();
+            Destroy(other.gameObject);
+        }
+
     }
     private void IsSpeededUp() {
         OriginalSpeed = tank.maxVelocity;
@@ -81,6 +91,11 @@ public class PickUp2 : MonoBehaviour {
     }
     private void Shotgun() {
         shotgunFire = true;
+    }
+
+    private void Laser()
+    {
+        laserFire = true;
     }
 
 }

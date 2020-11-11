@@ -49,8 +49,9 @@ MonoBehaviour:
   BigBoy: {fileID: 3166402795608650637, guid: 9ec8affb613a6b54e9a97f3fe8a83e18, type: 3}
   pu: {fileID: 1123115395}
   pm: {fileID: 7674806845619064777}
-  php2: {fileID: 0}
   lr: {fileID: 8802744371464102020}
+  laserParticle: {fileID: 5455518161879815104, guid: 4fad5753e7713cd439c1a8dfeb0ccb32, type: 3}
+  laserCollider: {fileID: 1858405436816079952, guid: 23a827622ad22374f9e40407d7b92250, type: 3}
   BurstAmount: 5
   projectileSpeed: 1000
   BigBoySpeed: 300
@@ -58,6 +59,9 @@ MonoBehaviour:
   onCoolDown: 0
   coolDownTime: 0.5
   coolDownTimeBurst: 1
+  takeDamageByLaser: 0
+  damageTimer: 0.25
+  laserDamage: 1
 --- !u!120 &8802744371464102020
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -546,6 +550,7 @@ MonoBehaviour:
   PlayerHp: 3
   BulletDmg: 1
   BombDmg: 3
+  laserDamage: 1
 --- !u!114 &81580623108831363
 MonoBehaviour:
   m_ObjectHideFlags: 0

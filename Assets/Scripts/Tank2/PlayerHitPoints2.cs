@@ -13,12 +13,14 @@ public class PlayerHitPoints2 : MonoBehaviour {
     public float PlayerHp = 3f;
     public float BulletDmg = 1f;
     public float BombDmg = 3f;
+    public float laserDamage = 1f;
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Score>();
     }
     void Update() 
     {
+
 
         if (PlayerHp <= 0) 
         {
@@ -38,6 +40,19 @@ public class PlayerHitPoints2 : MonoBehaviour {
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "LaserCollider")
+        {
+            Debug.Log("player hit");
+            PlayerHp = PlayerHp - laserDamage;
+        }
+    }
 
 
 }
+
+
+
+
+

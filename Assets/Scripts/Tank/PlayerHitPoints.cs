@@ -14,6 +14,7 @@ public class PlayerHitPoints : MonoBehaviour
     public float PlayerHp = 3f;
     public float BulletDmg = 1f;
     public float BombDmg = 3f;
+    public float laserDamage = 1f;
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Score>();
@@ -35,7 +36,18 @@ public class PlayerHitPoints : MonoBehaviour
         else if (other.gameObject.tag == "Bomb") {
             PlayerHp = PlayerHp - BombDmg;
         }
+
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "LaserCollider")
+        {
+            PlayerHp = PlayerHp - laserDamage;
+        }
+    }
+
+
 
 
 }

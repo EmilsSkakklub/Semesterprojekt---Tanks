@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,6 +12,11 @@ public class Skydder2 : MonoBehaviour {
     public PickUp2 pu;
     public PlayerMovement2 pm;
 
+    public LineRenderer lr;
+    public ParticleSystem laserParticle;
+    public GameObject laserCollider;
+
+    public int burstAmount = 5;
 
     public float projectileSpeed = 500f;
     public float BigBoySpeed = 300;
@@ -21,6 +27,18 @@ public class Skydder2 : MonoBehaviour {
     public float coolDownTime = 0.3f;
     public float coolDownTimeBurst = 1f;
 
+    //laser variables
+    private bool hasTakenDamage = false;
+    public bool takeDamageByLaser = false;
+    public float damageTimer = 0.25f;
+    private float resetDamageTimer;
+    public int laserDamage = 1;
+
+
+    private void Start()
+    {
+        resetDamageTimer = damageTimer;
+    }
 
     void Update() {
         //if pressing the shoot button ->> SHOOT
@@ -32,6 +50,8 @@ public class Skydder2 : MonoBehaviour {
         if (BigBoyInAir == true) {
             ssc.StartShake(ssc.length, ssc.power);
         }
+        //Check if laser should render + shake the screen a little
+        checkLaserActive();
     }
     void Fire() {
         //normal
@@ -49,6 +69,11 @@ public class Skydder2 : MonoBehaviour {
         //shotgun 
         else if (pu.shotgunFire) {
             ShotgunShoot();
+        }
+
+        else if (pu.laserFire)
+        {
+            LaserMode();
         }
 
 
@@ -82,11 +107,16 @@ public class Skydder2 : MonoBehaviour {
 
 
     private void BurstShoot() {
-        Invoke("spawnBullet", 0.0f);
-        Invoke("spawnBullet", 0.1f);
-        Invoke("spawnBullet", 0.2f);
-        Invoke("spawnBullet", 0.3f);
-        Invoke("spawnBullet", 0.4f);
+        int i = 0;
+        float timeBetweenShots = 0;
+
+        while (i < burstAmount)
+        {
+            Invoke("spawnBullet", timeBetweenShots);
+            i++;
+            timeBetweenShots += 0.1f;
+        }
+
         onCoolDown = true;
         Invoke("coolDown", coolDownTimeBurst);
     }
@@ -96,13 +126,58 @@ public class Skydder2 : MonoBehaviour {
         //some shotgun code here
     }
 
+    private void LaserMode()
+    {
+        lr.SetPosition(0, transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
+        Debug.DrawLine(transform.position, hit.point);
+
+        if (hit.collider.tag == "Wall" || hit.collider.tag == "Player" || hit.collider.tag == "Box" || hit.collider.tag == "SpawnPoint")
+        {
+            lr.SetPosition(1, new Vector3(hit.point.x, hit.point.y, transform.position.z));
+            Instantiate(laserParticle, hit.point, quaternion.identity);
+            GameObject Lol = Instantiate(laserCollider, hit.point, quaternion.identity);
+        }
+        else
+        {
+            lr.SetPosition(1, transform.up * 2000);
+        }
+    }
+
+
+    private void checkLaserActive()
+    {
+        if (pm.ButtonShoot && pu.laserFire)
+        {
+            ssc.StartShake(0.02f, 0.02f);
+            lr.enabled = true;
+        }
+        else
+        {
+            lr.enabled = false;
+        }
+
+        //cooldown for player taking damage by laser
+        if (hasTakenDamage)
+            hasTakenDamage = false;
+        {
+            if (damageTimer > 0)
+            {
+                damageTimer -= Time.deltaTime;
+                if (damageTimer <= 0)
+                {
+                    hasTakenDamage = false;
+                    damageTimer = resetDamageTimer;
+                }
+            }
+        }
+    }
 
 
 
 
-
-    //shooting cooldown
-    private void coolDown() {
+        //shooting cooldown
+        private void coolDown() {
         onCoolDown = false;
     }
 
