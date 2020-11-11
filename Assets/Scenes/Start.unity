@@ -938,6 +938,14 @@ PrefabInstance:
       propertyPath: laserCollider
       value: 
       objectReference: {fileID: 1858405436816079952, guid: 23a827622ad22374f9e40407d7b92250, type: 3}
+    - target: {fileID: 1312563292, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: damageTimer
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312563292, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: coolDownTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1351415215, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: PlayerHp
       value: 100
@@ -1288,12 +1296,24 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: -0.0072649685
       objectReference: {fileID: 0}
+    - target: {fileID: 3501998574894152470, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 3501998574894152470, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.7058824
+      objectReference: {fileID: 0}
     - target: {fileID: 5353080063636157039, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
       propertyPath: ssc
       value: 
       objectReference: {fileID: 672903919}
     - target: {fileID: 5353080063636157039, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
       propertyPath: coolDownTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5353080063636157039, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
+      propertyPath: damageTimer
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5433629028399849359, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}

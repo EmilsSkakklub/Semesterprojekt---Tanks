@@ -54,9 +54,21 @@ public class PlayerMovement2 : MonoBehaviour {
 
     //rotate player
     private void rotate() {
-        if (ButtonLeftTurn) {
+
+        //rotate slower when pushing the fire button
+        if (ButtonShoot && ButtonLeftTurn)
+        {
+            body.rotation += rotationSpeed / 3;
+        }
+        else if (ButtonShoot && ButtonRightTurn)
+        {
+            body.rotation -= rotationSpeed / 3;
+        }
+
+        else if (ButtonLeftTurn) {
             body.rotation += rotationSpeed;
-        } else if (ButtonRightTurn) {
+        } 
+        else if (ButtonRightTurn) {
             body.rotation -= rotationSpeed;
         }
     }

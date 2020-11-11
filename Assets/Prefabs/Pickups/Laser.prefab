@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3025842054279976969}
   - component: {fileID: 3025842054279976968}
   - component: {fileID: 3025842054279976983}
+  - component: {fileID: -1238592375032920972}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Laser
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3025842054279976982}
   m_LocalRotation: {x: -0.00097090105, y: -0.0029822404, z: -0.30956697, w: 0.9508725}
-  m_LocalPosition: {x: -1.4229, y: -2.2408, z: 0}
-  m_LocalScale: {x: 0.08385605, y: 0.60786796, z: 1}
+  m_LocalPosition: {x: -1.502, y: -2.183, z: -0.001}
+  m_LocalScale: {x: 0.15984799, y: 0.60786796, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,3 +109,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-1238592375032920972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025842054279976982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628ee820f42a5e44096b479ffe286060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

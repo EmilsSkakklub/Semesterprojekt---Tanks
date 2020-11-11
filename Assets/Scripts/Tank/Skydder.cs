@@ -30,11 +30,9 @@ public class Skydder : MonoBehaviour {
     public float coolDownTimeBurst = 1f;
 
     //laser variables
-    private bool hasTakenDamage = false;
     public bool takeDamageByLaser = false;
-    public float damageTimer = 0.25f;
+    public float damageTimer = 0.5f;
     private float resetDamageTimer;
-    public int laserDamage = 1;
 
 
 
@@ -161,15 +159,14 @@ public class Skydder : MonoBehaviour {
         }
 
         //cooldown for player taking damage by laser
-        if (hasTakenDamage)
-            hasTakenDamage = false;
+        if (takeDamageByLaser)
             {
             if (damageTimer > 0)
             {
                 damageTimer -= Time.deltaTime;
                 if (damageTimer <= 0)
                 {
-                    hasTakenDamage = false;
+                    takeDamageByLaser = false;
                     damageTimer = resetDamageTimer;
                 }
             }

@@ -11,10 +11,11 @@ public class PlayerHitPoints : MonoBehaviour
     public ShowBlueScore sbs;
     public Score score;
 
-    public float PlayerHp = 3f;
-    public float BulletDmg = 1f;
-    public float BombDmg = 3f;
-    public float laserDamage = 1f;
+    public int PlayerHp = 3;
+    public int BulletDmg = 1;
+    public int BombDmg = 3;
+    public int laserDamage = 1;
+
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Score>();
@@ -43,9 +44,15 @@ public class PlayerHitPoints : MonoBehaviour
     {
         if (collision.gameObject.tag == "LaserCollider")
         {
-            PlayerHp = PlayerHp - laserDamage;
+            if (!skydder.takeDamageByLaser)
+            {
+                skydder.takeDamageByLaser = true;
+                PlayerHp -= laserDamage;
+            }
+            
         }
     }
+
 
 
 

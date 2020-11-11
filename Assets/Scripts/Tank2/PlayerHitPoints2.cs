@@ -44,8 +44,11 @@ public class PlayerHitPoints2 : MonoBehaviour {
     {
         if (collision.gameObject.tag == "LaserCollider")
         {
-            Debug.Log("player hit");
-            PlayerHp = PlayerHp - laserDamage;
+            if (!skydder.takeDamageByLaser)
+            {
+                skydder.takeDamageByLaser = true;
+                PlayerHp -= laserDamage;
+            }
         }
     }
 
