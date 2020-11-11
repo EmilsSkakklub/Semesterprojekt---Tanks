@@ -451,6 +451,7 @@ MonoBehaviour:
   pinkWin: {fileID: 0}
   sps: {fileID: 0}
   score: {fileID: 0}
+  ps: {fileID: 6687237102704889235, guid: 5846a99b75d961e4088695a1b6e21297, type: 3}
   PlayerHp: 3
   BulletDmg: 1
   BombDmg: 3
@@ -826,7 +827,6 @@ MonoBehaviour:
   coolDownTimeBurst: 1
   takeDamageByLaser: 0
   damageTimer: 0.25
-  laserDamage: 1
 --- !u!120 &3501998574894152470
 LineRenderer:
   m_ObjectHideFlags: 0

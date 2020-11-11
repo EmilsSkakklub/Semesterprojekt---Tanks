@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerHitPoints : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerHitPoints : MonoBehaviour
     public EnableBlueWin blueWin;
     public ShowBlueScore sbs;
     public Score score;
+    public ParticleSystem ps;
 
     public int PlayerHp = 3;
     public int BulletDmg = 1;
@@ -28,6 +30,7 @@ public class PlayerHitPoints : MonoBehaviour
             skydder.BigBoyInAir = false;
             score.blueScore++;
             Player1.SetActive(false);
+            Instantiate(ps, transform.position, quaternion.identity);
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {

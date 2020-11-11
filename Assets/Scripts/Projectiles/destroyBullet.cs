@@ -2,12 +2,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class destroyBullet : MonoBehaviour
 {
 
     public Rigidbody2D bullet;
+    public AudioSource bounceSound;
+    public AudioSource impactSound;
+    public ParticleSystem ps;
 
     public int numberOfBounces = 3;     //amount of times the bullet can bounce of walls before being destroyed
     public bool disableObject = false;  //disables object after hitting wall a number of times
@@ -36,7 +40,13 @@ public class destroyBullet : MonoBehaviour
             if (numberOfBounces <= 0)
             {
                 removeBullet();
+                
             }
+            else if(numberOfBounces > 0) {
+                bounceSound.Play();
+            }
+            Instantiate(ps, transform.position, quaternion.identity);
+
 
         }
         else if (other.gameObject.tag == "Player")
@@ -63,6 +73,7 @@ public class destroyBullet : MonoBehaviour
         disableObject = true;
         bullet.Sleep();
         Invoke("destroyObject", 2f);
+        impactSound.Play();
     }
 
 }

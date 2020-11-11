@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 35923947}
   - component: {fileID: 35923946}
   m_Layer: 0
-  m_Name: Ikke-angivet-1-02
+  m_Name: Keybinds Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &50536517
 GameObject:
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 50536519}
   - component: {fileID: 50536518}
   m_Layer: 0
-  m_Name: "Ikke-angivet-1_Tegnebr\xE6t 1"
+  m_Name: Keybinds Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &65369563
 PrefabInstance:
@@ -294,6 +294,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7413932872675999920, guid: ab0d8796ac3a8de40bd09c063a31b22f, type: 3}
+      propertyPath: Priority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413932872675999920, guid: ab0d8796ac3a8de40bd09c063a31b22f, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7413932872675999921, guid: ab0d8796ac3a8de40bd09c063a31b22f, type: 3}
       propertyPath: m_Name
       value: BackgroundMusic
@@ -557,7 +565,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 5750287450578188024, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
     - {fileID: 5750287450578188026, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
     - {fileID: 1750407178, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
@@ -946,10 +953,6 @@ PrefabInstance:
       propertyPath: coolDownTime
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1351415215, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
-      propertyPath: PlayerHp
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 81580623108831363, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: ssc
       value: 
@@ -1217,12 +1220,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1892217910, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
-      propertyPath: PlayerHp
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1892217910, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
       propertyPath: sk
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892217910, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
+      propertyPath: PlayerHp
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2363142808201636649, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
       propertyPath: m_ConnectedAnchor.x

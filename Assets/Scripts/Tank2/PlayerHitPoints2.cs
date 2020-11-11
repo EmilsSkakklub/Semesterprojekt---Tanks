@@ -9,6 +9,7 @@ public class PlayerHitPoints2 : MonoBehaviour {
     public EnablePinkWin pinkWin;
     public ShowPinkScore sps;
     public Score score;
+    public ParticleSystem ps;
 
     public float PlayerHp = 3f;
     public float BulletDmg = 1f;
@@ -26,8 +27,10 @@ public class PlayerHitPoints2 : MonoBehaviour {
         {
             skydder.BigBoyInAir = false;
             score.pinkScore++;
+            Instantiate(ps, transform.position, Quaternion.identity);
             Player2.SetActive(false);
-        
+            
+
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
