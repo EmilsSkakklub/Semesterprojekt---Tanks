@@ -300,8 +300,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7413932872675999920, guid: ab0d8796ac3a8de40bd09c063a31b22f, type: 3}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 7413932872675999920, guid: ab0d8796ac3a8de40bd09c063a31b22f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f0287c027d07c94082f94a08957e3e8, type: 3}
     - target: {fileID: 7413932872675999921, guid: ab0d8796ac3a8de40bd09c063a31b22f, type: 3}
       propertyPath: m_Name
       value: BackgroundMusic
@@ -484,6 +488,14 @@ PrefabInstance:
       propertyPath: body2
       value: 
       objectReference: {fileID: 1243309005}
+    - target: {fileID: 5041751416462352322, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041751416462352322, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
+      propertyPath: Priority
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5750287449459873327, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -953,6 +965,10 @@ PrefabInstance:
       propertyPath: coolDownTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1351415215, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: PlayerHp
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 81580623108831363, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: ssc
       value: 
@@ -1225,7 +1241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892217910, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
       propertyPath: PlayerHp
-      value: 100
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 2363142808201636649, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
       propertyPath: m_ConnectedAnchor.x

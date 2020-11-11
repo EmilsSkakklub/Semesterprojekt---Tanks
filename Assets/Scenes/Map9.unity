@@ -947,6 +947,10 @@ PrefabInstance:
       propertyPath: php2
       value: 
       objectReference: {fileID: 1589543114}
+    - target: {fileID: 1750407178, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
+      propertyPath: BlueWinsSound
+      value: 
+      objectReference: {fileID: 1122181082}
     - target: {fileID: 5750287450578188024, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
       propertyPath: playerHP
       value: 
@@ -1071,6 +1075,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d839d78982f9234499e981f7e436c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1122181082 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5041751416462352322, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
+  m_PrefabInstance: {fileID: 1122181075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1589543113
 PrefabInstance:
   m_ObjectHideFlags: 0

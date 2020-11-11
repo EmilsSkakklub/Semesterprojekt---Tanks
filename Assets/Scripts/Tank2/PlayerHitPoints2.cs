@@ -6,8 +6,6 @@ public class PlayerHitPoints2 : MonoBehaviour {
 
     public GameObject Player2;
     public Skydder2 skydder;
-    public EnablePinkWin pinkWin;
-    public ShowPinkScore sps;
     public Score score;
     public ParticleSystem ps;
 

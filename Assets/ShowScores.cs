@@ -9,9 +9,14 @@ public class ShowScores : MonoBehaviour
     public ShowBlueScore sbs;
     public ShowPinkScore sps;
     public Score score;
+    public AudioSource BlueWinsSound;
+    public AudioSource PinkWinsSound;
 
     public PlayerHitPoints php;
     public PlayerHitPoints2 php2;
+
+    private bool alreadyPlayed = false;
+    private bool alreadyPlayed2 = false;
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Score>();
     }
@@ -25,8 +30,12 @@ public class ShowScores : MonoBehaviour
             sps.gameObject.SetActive(true);
             sbs.gameObject.SetActive(true);
         }
-        if (score.pinkScore == score.scoreMax) { //WINS
+        if (score.pinkScore == score.scoreMax) { // PINK WINS
             Debug.Log("show win");
+            if (!alreadyPlayed) {
+                alreadyPlayed = true;
+                PinkWinsSound.PlayDelayed(0.5f);
+            }
             pinkWin.gameObject.SetActive(true);
         }
     }
@@ -35,9 +44,15 @@ public class ShowScores : MonoBehaviour
             sbs.gameObject.SetActive(true);
             sps.gameObject.SetActive(true);// numbers
         }
-        if (score.blueScore == score.scoreMax) { //WINS
+        if (score.blueScore == score.scoreMax) { // BLUE WINS
             Debug.Log("show win");
+
+            if (!alreadyPlayed2) {
+                alreadyPlayed2 = true;
+                BlueWinsSound.PlayDelayed(0.5f);
+            }
             blueWin.gameObject.SetActive(true);
+
 
         }
     }

@@ -1524,6 +1524,10 @@ PrefabInstance:
       propertyPath: php2
       value: 
       objectReference: {fileID: 1905421012}
+    - target: {fileID: 1750407178, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
+      propertyPath: BlueWinsSound
+      value: 
+      objectReference: {fileID: 1795016907}
     - target: {fileID: 2026135434, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
       propertyPath: body2
       value: 
@@ -1622,6 +1626,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
+--- !u!82 &1795016907 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5041751416462352322, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}
+  m_PrefabInstance: {fileID: 1795016906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1851604982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 28183888, guid: 93556dfe72f17704989fb3f51b5fdeb0, type: 3}

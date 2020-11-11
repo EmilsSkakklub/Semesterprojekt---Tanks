@@ -8,8 +8,6 @@ public class PlayerHitPoints : MonoBehaviour
 {
     public GameObject Player1;
     public Skydder skydder;
-    public EnableBlueWin blueWin;
-    public ShowBlueScore sbs;
     public Score score;
     public ParticleSystem ps;
 
