@@ -447,9 +447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player2: {fileID: 2363142808852670715}
+  pm: {fileID: 5353080062960051142}
   skydder: {fileID: 5353080063636157039}
-  pinkWin: {fileID: 0}
-  sps: {fileID: 0}
   score: {fileID: 0}
   ps: {fileID: 6687237102704889235, guid: 5846a99b75d961e4088695a1b6e21297, type: 3}
   PlayerHp: 3
@@ -639,6 +638,8 @@ MonoBehaviour:
   wallCollision: 0
   timerBool: 0
   timer: 0.025
+  stunned: 0
+  stunTimer: 2
   ButtonLeftTurn: 0
   ButtonRightTurn: 0
   ButtonShoot: 0

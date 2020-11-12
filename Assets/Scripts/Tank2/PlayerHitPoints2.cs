@@ -5,30 +5,28 @@ using UnityEngine;
 public class PlayerHitPoints2 : MonoBehaviour {
 
     public GameObject Player2;
+    public PlayerMovement2 pm;
     public Skydder2 skydder;
     public Score score;
     public ParticleSystem ps;
 
-    public float PlayerHp = 3f;
-    public float BulletDmg = 1f;
-    public float BombDmg = 3f;
-    public float laserDamage = 1f;
+    public int PlayerHp = 3;
+    public int BulletDmg = 1;
+    public int BombDmg = 3;
+    public int explosionDmg = 2;
+    public int laserDamage = 1;
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Score>();
     }
     void Update() 
     {
-
-
         if (PlayerHp <= 0) 
         {
             skydder.BigBoyInAir = false;
             score.pinkScore++;
             Instantiate(ps, transform.position, Quaternion.identity);
             Player2.SetActive(false);
-            
-
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
@@ -38,6 +36,7 @@ public class PlayerHitPoints2 : MonoBehaviour {
         else if (other.gameObject.tag == "Bomb") {
             PlayerHp = PlayerHp - BombDmg;
         }
+        
     }
 
 
@@ -51,6 +50,12 @@ public class PlayerHitPoints2 : MonoBehaviour {
                 PlayerHp -= laserDamage;
             }
         }
+        else if (collision.gameObject.tag == "Explosion")
+        {
+            pm.stunned = true;
+            PlayerHp = PlayerHp - explosionDmg;
+        }
+
     }
 
 

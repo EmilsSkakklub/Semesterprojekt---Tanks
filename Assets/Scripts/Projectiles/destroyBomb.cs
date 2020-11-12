@@ -1,23 +1,36 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class destroyBomb : MonoBehaviour {
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Wall") {
-            Destroy(gameObject);
+    public GameObject explotionSpawnPoint;
+    public GameObject explosion;
 
-        } else if (other.gameObject.tag == "Player") {
-            Destroy(gameObject);
 
-        } else if (other.gameObject.tag == "Bomb") {
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Wall")
+        {
             Destroy(gameObject);
+            Instantiate(explosion, explotionSpawnPoint.transform.position, quaternion.identity);
+
+        }
+        else if (other.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+            Instantiate(explosion, explotionSpawnPoint.transform.position, quaternion.identity);
+
+        }
+        else if (other.gameObject.tag == "Bomb")
+        {
+            Destroy(gameObject);
+            Instantiate(explosion, explotionSpawnPoint.transform.position, quaternion.identity);
         }
     }
 
+    }
 
-
-}
 

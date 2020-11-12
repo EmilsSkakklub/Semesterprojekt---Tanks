@@ -130,7 +130,7 @@ public class Skydder2 : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
         Debug.DrawLine(transform.position, hit.point);
 
-        if (hit.collider.tag == "Wall" || hit.collider.tag == "Player" || hit.collider.tag == "Box" || hit.collider.tag == "SpawnPoint")
+        if (hit.collider.tag == "Wall" || hit.collider.tag == "Player" || hit.collider.tag == "Box" || hit.collider.tag == "SpawnPoint" || hit.collider.tag == "Bullet" || hit.collider.tag == "Bomb")
         {
             lr.SetPosition(1, new Vector3(hit.point.x, hit.point.y, transform.position.z));
             Instantiate(laserParticle, hit.point, quaternion.identity);
@@ -154,7 +154,6 @@ public class Skydder2 : MonoBehaviour {
         {
             lr.enabled = false;
         }
-
         //cooldown for player taking damage by laser
         if (takeDamageByLaser)
         {

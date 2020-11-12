@@ -22,6 +22,10 @@ public class PlayerMovement2 : MonoBehaviour {
     public bool timerBool = false;      //boolean for direction change
     public float timer = 0.025f;        //timer for direction 
 
+    public bool stunned = false;
+    public float stunTimer = 2f;
+
+
     public bool ButtonLeftTurn = false;
     public bool ButtonRightTurn = false;
     public bool ButtonShoot = false;
@@ -48,6 +52,7 @@ public class PlayerMovement2 : MonoBehaviour {
     private void FixedUpdate() {
         rotate();
         move();
+        stunPlayer();
     }
 
 
@@ -153,39 +158,58 @@ public class PlayerMovement2 : MonoBehaviour {
             timesJumped = 0;
             body.Sleep();
         }
-
-
     }
+
+    private void stunPlayer()
+    {
+        if (stunned)
+        {
+            body.velocity = maxVelocity * (body.velocity.normalized) / 2;
+            body.rotation += rotationSpeed * 3f;
+            if (stunned && stunTimer > 0)
+            {
+                stunTimer -= Time.deltaTime;
+                if (stunTimer <= 0)
+                {
+                    body.velocity = maxVelocity * (body.velocity.normalized);
+                    stunTimer = 2f;
+                    stunned = false;
+                }
+            }
+        }
+    }
+
+
     private void buttonSettings() {
-        if (Input.GetKey(KeyCode.LeftArrow)) {
+        if (Input.GetKey(KeyCode.LeftArrow) && !stunned) {
             ButtonLeftTurn = true;
         } else {
             ButtonLeftTurn = false;
         }
 
 
-        if (Input.GetKey(KeyCode.RightArrow)) {
+        if (Input.GetKey(KeyCode.RightArrow) && !stunned) {
             ButtonRightTurn = true;
         } else {
             ButtonRightTurn = false;
         }
 
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !stunned) {
             ButtonChangeGravity = true;
         } else {
             ButtonChangeGravity = false;
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Comma)) {
+        if (Input.GetKeyDown(KeyCode.Comma) && !stunned) {
             ButtonJump = true;
         } else {
             ButtonJump = false;
         }
 
 
-        if (Input.GetKey(KeyCode.Period)) {
+        if (Input.GetKey(KeyCode.Period) && !stunned) {
             ButtonShoot = true;
         } else {
             ButtonShoot = false;

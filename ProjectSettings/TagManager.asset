@@ -18,6 +18,7 @@ TagManager:
   - MapChange
   - Laser
   - LaserCollider
+  - Explosion
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,12 @@ public class sp4 : MonoBehaviour
 {
     public Boxspawner bs;
     public bool SpawnAvaliable4 = true;
+
+    private void Start()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Box") {
             Debug.Log("SP4 TAKEN");

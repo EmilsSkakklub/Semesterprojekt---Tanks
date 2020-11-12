@@ -69,13 +69,6 @@ public class Skydder : MonoBehaviour {
         }
 
 
-        //shotgun 
-        else if (pu.shotgunFire)
-        {
-            ShotgunMode();
-        }
-
-
         else if (pu.laserFire)
         {
             LaserMode();
@@ -122,22 +115,17 @@ public class Skydder : MonoBehaviour {
         Invoke("coolDown", coolDownTimeBurst);
     }
 
-
-    private void ShotgunMode() {
-        //some shotgun code here
-    }
-
     private void LaserMode()
     {
         lr.SetPosition(0, transform.position);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
         Debug.DrawLine(transform.position, hit.point);
 
-        if (hit.collider.tag == "Wall" || hit.collider.tag == "Player" || hit.collider.tag == "Box" || hit.collider.tag == "SpawnPoint")
+        if (hit.collider.tag == "Wall" || hit.collider.tag == "Player" || hit.collider.tag == "Box" || hit.collider.tag == "SpawnPoint" || hit.collider.tag == "Bullet" || hit.collider.tag == "Bomb")
         {
             lr.SetPosition(1, new Vector3(hit.point.x, hit.point.y, transform.position.z));
             Instantiate(laserParticle, hit.point, quaternion.identity);
-            GameObject Lol =  Instantiate(laserCollider, hit.point, quaternion.identity);
+            Instantiate(laserCollider, hit.point, quaternion.identity);
         }
         else
         {
@@ -146,6 +134,8 @@ public class Skydder : MonoBehaviour {
     }
 
 
+
+    //render laser and check damage cooldown
     private void checkLaserActive()
     {
         if(pm.ButtonShoot && pu.laserFire)
@@ -157,7 +147,6 @@ public class Skydder : MonoBehaviour {
         {
             lr.enabled = false;
         }
-
         //cooldown for player taking damage by laser
         if (takeDamageByLaser)
             {
@@ -173,13 +162,6 @@ public class Skydder : MonoBehaviour {
         }
         
     }
-        
-
-
-
-
-
-
 
     //shooting cooldown
     private void coolDown(){

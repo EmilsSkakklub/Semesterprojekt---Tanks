@@ -7,6 +7,7 @@ public class PlayerHitPoints : MonoBehaviour
 
 {
     public GameObject Player1;
+    public PlayerMovement pm;
     public Skydder skydder;
     public Score score;
     public ParticleSystem ps;
@@ -14,6 +15,7 @@ public class PlayerHitPoints : MonoBehaviour
     public int PlayerHp = 3;
     public int BulletDmg = 1;
     public int BombDmg = 3;
+    public int explosionDmg = 2;
     public int laserDamage = 1;
 
 
@@ -38,7 +40,6 @@ public class PlayerHitPoints : MonoBehaviour
         else if (other.gameObject.tag == "Bomb") {
             PlayerHp = PlayerHp - BombDmg;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,8 +50,12 @@ public class PlayerHitPoints : MonoBehaviour
             {
                 skydder.takeDamageByLaser = true;
                 PlayerHp -= laserDamage;
-            }
-            
+            }  
+        }
+        else if (collision.gameObject.tag == "Explosion")
+        {
+            pm.stunned = true;
+            PlayerHp = PlayerHp - explosionDmg;
         }
     }
 

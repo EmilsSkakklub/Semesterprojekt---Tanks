@@ -31,7 +31,6 @@ public class ShowScores : MonoBehaviour
             sbs.gameObject.SetActive(true);
         }
         if (score.pinkScore == score.scoreMax) { // PINK WINS
-            Debug.Log("show win");
             if (!alreadyPlayed) {
                 alreadyPlayed = true;
                 PinkWinsSound.PlayDelayed(0.5f);
@@ -45,7 +44,6 @@ public class ShowScores : MonoBehaviour
             sps.gameObject.SetActive(true);// numbers
         }
         if (score.blueScore == score.scoreMax) { // BLUE WINS
-            Debug.Log("show win");
 
             if (!alreadyPlayed2) {
                 alreadyPlayed2 = true;

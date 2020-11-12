@@ -8,7 +8,7 @@ public class PickUpRotator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
 
     // Update is called once per frame
