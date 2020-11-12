@@ -10,6 +10,8 @@ public class PlayerHitPoints2 : MonoBehaviour {
     public Score score;
     public ParticleSystem ps;
 
+    public HealthBar hpBar;
+
     public int PlayerHp = 3;
     public int BulletDmg = 1;
     public int BombDmg = 3;
@@ -18,9 +20,13 @@ public class PlayerHitPoints2 : MonoBehaviour {
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Score>();
+
+        hpBar.setMaxHealth(PlayerHp);
     }
     void Update() 
     {
+        hpBar.updateHealth(PlayerHp);
+
         if (PlayerHp <= 0) 
         {
             skydder.BigBoyInAir = false;

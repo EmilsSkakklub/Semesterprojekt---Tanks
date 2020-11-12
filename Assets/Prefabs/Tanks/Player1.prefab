@@ -527,6 +527,8 @@ MonoBehaviour:
   SpeedUpTime: 10
   SpeedDownTime: 10
   BurstTime: 10
+  LaserTime: 10
+  startShootNormalCooldown: 0
   Bombs: 0
   burstFire: 0
   shotgunFire: 0
@@ -548,9 +550,11 @@ MonoBehaviour:
   skydder: {fileID: 1312563292}
   score: {fileID: 0}
   ps: {fileID: 6687237102704889235, guid: 5846a99b75d961e4088695a1b6e21297, type: 3}
+  hpBar: {fileID: 0}
   PlayerHp: 3
   BulletDmg: 1
   BombDmg: 3
+  explosionDmg: 2
   laserDamage: 1
 --- !u!114 &81580623108831363
 MonoBehaviour:
