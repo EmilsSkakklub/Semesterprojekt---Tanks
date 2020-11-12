@@ -7,6 +7,7 @@ public class PickUp : MonoBehaviour
 {
     public PlayerMovement tank;
 
+
     public bool TakenBoost;                     //is true if a certain boost has been picked up
 
     public float SpeedUpAmount = 3f;             //amount the players velocity speeds up when picking up 'speed up'
@@ -18,6 +19,9 @@ public class PickUp : MonoBehaviour
     public float SpeedUpTime = 10f;             //timer for speed up pick up
     public float SpeedDownTime = 10f;           //timer for speed down pick up
     public float BurstTime = 10f;               //timer for burst pick up
+    public float LaserTime = 10f;               //timer for laser pick up
+
+    public bool startShootNormalCooldown = false;
 
     public int Bombs = 0;                       //indicates number of nukes a player has
 
@@ -27,6 +31,12 @@ public class PickUp : MonoBehaviour
 
     private float OriginalSpeed;                //the original velocity of the player
     private float OriginalRotationSpeed;        //the original rotation speed of the player
+
+
+    private void Update()
+    {
+        delayCooldown();
+    }
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -44,24 +54,19 @@ public class PickUp : MonoBehaviour
             IsSlowedDown();
             Destroy(other.gameObject);
         }
-        else if (other.gameObject.tag == "BombUp") {
+        else if (other.gameObject.tag == "BombUp" && !TakenBoost) {
 
             Debug.Log("Bomb aquired");
             Bombs++;
             Destroy(other.gameObject);
         }
-        else if(other.gameObject.tag == "Burst"){
+        else if(other.gameObject.tag == "Burst" && !TakenBoost)
+        {
             Debug.Log("Burst aquired");
             Burst();
             Destroy(other.gameObject);
         }
-        else if(other.gameObject.tag == "Shotgun")
-        {
-            Debug.Log("Shotgun aquired");
-            Shotgun();
-            Destroy(other.gameObject);
-        }
-        else if(other.gameObject.tag == "Laser")
+        else if(other.gameObject.tag == "Laser" && !TakenBoost)
         {
             Debug.Log("Laser aquired");
             Laser();
@@ -96,24 +101,60 @@ public class PickUp : MonoBehaviour
     
 
 
+    private void ShootNormal()
+    {
+        startShootNormalCooldown = false;
+        TakenBoost = false;
+        burstFire = false;
+        laserFire = false;
+    }
+    
     private void Burst()
     {
         burstFire = true;
-        Invoke("ShootNormal", BurstTime);
-    }
-    private void ShootNormal()
-    {
-        burstFire = false;
-    }
-    
-
-    private void Shotgun()
-    {
-        shotgunFire = true;
+        TakenBoost = true;
     }
 
     private void Laser()
     {
         laserFire = true;
+        TakenBoost = true;
+    }
+
+
+
+
+
+    private void delayCooldown()
+    {
+        if (burstFire)
+        {
+            if (tank.ButtonShoot)
+            {
+                startShootNormalCooldown = true;
+            }
+            if (startShootNormalCooldown)
+            {
+                BurstTime -= Time.deltaTime;
+                if (BurstTime <= 0)
+                {
+                    ShootNormal();
+                    BurstTime = 10f;
+                }
+            }
+        }
+
+        if (laserFire)
+        {
+            if (tank.ButtonShoot)
+            {
+                LaserTime -= Time.deltaTime;
+                if (LaserTime <= 0)
+                {
+                    ShootNormal();
+                    LaserTime = 10f;
+                }
+            }
+        }
     }
 }
