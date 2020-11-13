@@ -57,7 +57,7 @@ public class Skydder : MonoBehaviour {
     }
     void Fire() {
         //bomb
-        if(pu.Bombs > 0) {
+        if(pu.bomb) {
             BombMode();
         }
 
@@ -97,7 +97,6 @@ public class Skydder : MonoBehaviour {
 
     onCoolDown = true;
     Invoke("coolDown", coolDownTime);
-    pu.Bombs--;
     }
 
 

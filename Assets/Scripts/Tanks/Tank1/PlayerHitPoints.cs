@@ -11,8 +11,9 @@ public class PlayerHitPoints : MonoBehaviour
     public Skydder skydder;
     public Score score;
     public ParticleSystem ps;
+    private Transform body;
 
-    public HealthBar hpBar;
+    public HealthBarPink hpBar;
 
     public int PlayerHp = 3;
     public int BulletDmg = 1;
@@ -23,12 +24,16 @@ public class PlayerHitPoints : MonoBehaviour
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Score>();
+        hpBar = GameObject.Find("Player1").GetComponentInChildren<HealthBarPink>();
+        body = GameObject.Find("Body").GetComponent<Transform>();
 
         hpBar.setMaxHealth(PlayerHp);
     }
     void Update()
     {
         hpBar.updateHealth(PlayerHp);
+        hpBar.transform.rotation = quaternion.Euler(0, 0, 0);
+        hpBar.transform.position = new Vector3(body.transform.position.x, body.transform.position.y - 1.2f, body.transform.position.y);
 
         if (PlayerHp <= 0) 
         {

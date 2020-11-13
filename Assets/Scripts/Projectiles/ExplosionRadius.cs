@@ -10,7 +10,6 @@ public class ExplosionRadius : MonoBehaviour
 
     private int explosionRadius = 15;
     private float explosionSpeed = 30f;
-    private float lerp = 0f;
     private Color colorStart = Color.black;
     private Color colorEnd = Color.red;
 
@@ -22,12 +21,7 @@ public class ExplosionRadius : MonoBehaviour
         explosion.transform.localScale += scaleChange;
 
 
-        explosion.GetComponent<Renderer>().material.color = Color.LerpUnclamped(colorStart, colorEnd, lerp);
-        lerp += 1f * Time.deltaTime;
-
-
-
-        if(explosion.transform.localScale.x >= explosionRadius)
+        if (explosion.transform.localScale.x >= explosionRadius)
         {
             Destroy(gameObject);
         }

@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explotionSpawnPoint: {fileID: 1745297637512498081}
   explosion: {fileID: 670640857180864343, guid: 4b4d5b8df1a95ac489e9047409567e49, type: 3}
+  nukeParicle: {fileID: 1859493596219195003, guid: f586d13efec2c0d40ad680db5786aa23, type: 3}
 --- !u!1 &4696795847238201000
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,8 +23,7 @@ public class PickUp : MonoBehaviour
 
     public bool startShootNormalCooldown = false;
 
-    public int Bombs = 0;                       //indicates number of nukes a player has
-
+    public bool bomb = false;
     public bool burstFire = false;              //if true, player shoots a burst of bullets when firing
     public bool shotgunFire = false;
     public bool laserFire = false;
@@ -57,7 +56,7 @@ public class PickUp : MonoBehaviour
         else if (other.gameObject.tag == "BombUp" && !TakenBoost) {
 
             Debug.Log("Bomb aquired");
-            Bombs++;
+            Bomb();
             Destroy(other.gameObject);
         }
         else if(other.gameObject.tag == "Burst" && !TakenBoost)
@@ -105,9 +104,18 @@ public class PickUp : MonoBehaviour
     {
         startShootNormalCooldown = false;
         TakenBoost = false;
+        bomb = false;
         burstFire = false;
         laserFire = false;
     }
+
+
+    private void  Bomb()
+    {
+        bomb = true;
+        TakenBoost = true;
+    }
+
     
     private void Burst()
     {
@@ -154,6 +162,14 @@ public class PickUp : MonoBehaviour
                     ShootNormal();
                     LaserTime = 10f;
                 }
+            }
+        }
+
+        if (bomb)
+        {
+            if (tank.ButtonShoot)
+            {
+                ShootNormal();
             }
         }
     }
