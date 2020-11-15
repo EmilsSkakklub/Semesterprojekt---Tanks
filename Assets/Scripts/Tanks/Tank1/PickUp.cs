@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
-{
+public class PickUp : MonoBehaviour{
     public PlayerMovement tank;
+
+    public PinkPickUpTimer put;
+    public GameObject pinkProcessBar;
+    public GameObject canon;
 
 
     public bool TakenBoost;                     //is true if a certain boost has been picked up
@@ -25,35 +27,67 @@ public class PickUp : MonoBehaviour
 
     public bool bomb = false;
     public bool burstFire = false;              //if true, player shoots a burst of bullets when firing
-    public bool shotgunFire = false;
     public bool laserFire = false;
+    public bool flameFire = false;
 
     private float OriginalSpeed;                //the original velocity of the player
     private float OriginalRotationSpeed;        //the original rotation speed of the player
+
+    private float lerp = 0;
+
+
+    private void Start()
+    {
+        put = GameObject.Find("HealthBarPink").GetComponentInChildren<PinkPickUpTimer>();
+        pinkProcessBar = GameObject.Find("PinkProcessBar");
+        canon = GameObject.Find("Canon1");
+    }
 
 
     private void Update()
     {
         delayCooldown();
+        ShowPickUpTimer();
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    
+    //activate process bar which shows how much more ammo a certain pick up has left
+    private void ShowPickUpTimer()
     {
-        if (other.gameObject.tag == "SpeedUp" && !TakenBoost)
+        pinkProcessBar.SetActive(false);
+
+        if (burstFire)
         {
-            Debug.Log("UP taken");
-            IsSpeededUp();
-            Destroy(other.gameObject);
+            pinkProcessBar.SetActive(true);
+            put.updateSliderValue(BurstTime);
         }
-        else if (other.gameObject.tag == "SpeedDown" && !TakenBoost)
+        else if (laserFire)
         {
-            Debug.Log("DOWN taken");
-            IsSlowedDown();
-            Destroy(other.gameObject);
+            pinkProcessBar.SetActive(true);
+            put.updateSliderValue(LaserTime);
         }
-        else if (other.gameObject.tag == "BombUp" && !TakenBoost) {
+        else if (bomb)
+        {
+            lerp += Time.deltaTime;
+            if(lerp >= 1)
+            {
+                lerp = 0;
+            }
+            canon.GetComponent<Renderer>().material.color = Color.LerpUnclamped(Color.black, Color.red, lerp);
+        }
+        else
+        {
+            canon.GetComponent<Renderer>().material.color = new Color32(49, 53, 50, 255);
+            pinkProcessBar.SetActive(false);
+        }
+    }
+
+    
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    { 
+        if (other.gameObject.tag == "BombUp" && !TakenBoost) {
 
             Debug.Log("Bomb aquired");
             Bomb();
@@ -69,6 +103,12 @@ public class PickUp : MonoBehaviour
         {
             Debug.Log("Laser aquired");
             Laser();
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.tag == "FlameThrower" && !TakenBoost)
+        {
+            Debug.Log("Flame Thrower");
+            FlameThrower();
             Destroy(other.gameObject);
         }
     }
@@ -107,6 +147,7 @@ public class PickUp : MonoBehaviour
         bomb = false;
         burstFire = false;
         laserFire = false;
+        flameFire = false;
     }
 
 
@@ -126,6 +167,12 @@ public class PickUp : MonoBehaviour
     private void Laser()
     {
         laserFire = true;
+        TakenBoost = true;
+    }
+
+    private void FlameThrower()
+    {
+        flameFire = true;
         TakenBoost = true;
     }
 

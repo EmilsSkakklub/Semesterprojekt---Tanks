@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerHitPoints2 : MonoBehaviour {
@@ -11,13 +12,13 @@ public class PlayerHitPoints2 : MonoBehaviour {
     public ParticleSystem ps;
     private Transform body;
 
-    public HealthBarBlue hpBar;
+    private HealthBarBlue hpBar;
 
 
-    public int PlayerHp = 3;
-    public int BulletDmg = 1;
-    public int BombDmg = 3;
-    public int explosionDmg = 2;
+    public int PlayerHp = 100;
+    public int BulletDmg = 3;
+    public int BombDmg = 30;
+    public int explosionDmg = 15;
     public int laserDamage = 1;
 
     private void Start() {
@@ -31,9 +32,14 @@ public class PlayerHitPoints2 : MonoBehaviour {
     {
         hpBar.updateHealth(PlayerHp);
         hpBar.transform.rotation = Quaternion.Euler(0,0,0);
-        hpBar.transform.position = new Vector3(body.transform.position.x, body.transform.position.y - 1.2f, body.transform.position.y);
+        hpBar.transform.position = new Vector3(body.transform.position.x, body.transform.position.y - 1.2f, body.transform.position.z);
 
-        if (PlayerHp <= 0) 
+        if(PlayerHp < 0)
+        {
+            PlayerHp = 0;
+        }
+
+        if (PlayerHp == 0) 
         {
             skydder.BigBoyInAir = false;
             score.pinkScore++;
@@ -47,8 +53,7 @@ public class PlayerHitPoints2 : MonoBehaviour {
         }
         else if (other.gameObject.tag == "Bomb") {
             PlayerHp = PlayerHp - BombDmg;
-        }
-        
+        } 
     }
 
 

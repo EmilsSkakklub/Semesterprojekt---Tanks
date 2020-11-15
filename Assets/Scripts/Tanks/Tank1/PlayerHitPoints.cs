@@ -13,12 +13,12 @@ public class PlayerHitPoints : MonoBehaviour
     public ParticleSystem ps;
     private Transform body;
 
-    public HealthBarPink hpBar;
+    private HealthBarPink hpBar;
 
-    public int PlayerHp = 3;
-    public int BulletDmg = 1;
-    public int BombDmg = 3;
-    public int explosionDmg = 2;
+    public int PlayerHp = 100;
+    public int BulletDmg = 3;
+    public int BombDmg = 30;
+    public int explosionDmg = 15;
     public int laserDamage = 1;
 
 
@@ -35,7 +35,12 @@ public class PlayerHitPoints : MonoBehaviour
         hpBar.transform.rotation = quaternion.Euler(0, 0, 0);
         hpBar.transform.position = new Vector3(body.transform.position.x, body.transform.position.y - 1.2f, body.transform.position.y);
 
-        if (PlayerHp <= 0) 
+        if(PlayerHp < 0)
+        {
+            PlayerHp = 0;
+        }
+
+        if (PlayerHp == 0) 
         {
             skydder.BigBoyInAir = false;
             score.blueScore++;

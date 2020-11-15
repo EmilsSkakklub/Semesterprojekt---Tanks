@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2363142807928457143}
   - component: {fileID: 2363142807928457137}
   m_Layer: 0
-  m_Name: Canon
+  m_Name: Canon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,6 +423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tank: {fileID: 5353080062960051142}
+  but: {fileID: 0}
+  blueProcessBar: {fileID: 0}
   TakenBoost: 0
   SpeedUpAmount: 3
   RotationSpeedUpAmount: 3
@@ -435,7 +437,6 @@ MonoBehaviour:
   startShootNormalCooldown: 0
   bomb: 0
   burstFire: 0
-  shotgunFire: 0
   laserFire: 0
 --- !u!114 &1892217910
 MonoBehaviour:
@@ -454,11 +455,10 @@ MonoBehaviour:
   skydder: {fileID: 5353080063636157039}
   score: {fileID: 0}
   ps: {fileID: 6687237102704889235, guid: 5846a99b75d961e4088695a1b6e21297, type: 3}
-  hpBar: {fileID: 0}
-  PlayerHp: 3
-  BulletDmg: 1
-  BombDmg: 3
-  explosionDmg: 2
+  PlayerHp: 100
+  BulletDmg: 3
+  BombDmg: 50
+  explosionDmg: 25
   laserDamage: 1
 --- !u!1 &2363142808664406737
 GameObject:
@@ -829,10 +829,10 @@ MonoBehaviour:
   BigBoySpeed: 300
   BigBoyInAir: 0
   onCoolDown: 0
-  coolDownTime: 1
+  coolDownTime: 0.5
   coolDownTimeBurst: 1
   takeDamageByLaser: 0
-  damageTimer: 0.25
+  damageTimer: 0.1
 --- !u!120 &3501998574894152470
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -905,8 +905,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 0.7058824}
+      key1: {r: 1, g: 0, b: 0, a: 0.7058824}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -950,6 +950,14 @@ PrefabInstance:
     - target: {fileID: 2544272251150414433, guid: 9eae219855e458a4a96f6268f9805ab4, type: 3}
       propertyPath: m_Name
       value: HealthBarBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044118650749343631, guid: 9eae219855e458a4a96f6268f9805ab4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044118650749343631, guid: 9eae219855e458a4a96f6268f9805ab4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5171007747728745809, guid: 9eae219855e458a4a96f6268f9805ab4, type: 3}
       propertyPath: m_LocalPosition.x

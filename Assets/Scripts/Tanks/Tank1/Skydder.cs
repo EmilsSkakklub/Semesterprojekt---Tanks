@@ -18,6 +18,8 @@ public class Skydder : MonoBehaviour {
     public ParticleSystem laserParticle;
     public GameObject laserCollider;
 
+    public ParticleSystem flameThrower;
+
     public int BurstAmount = 5;
 
     public float projectileSpeed = 500f;
@@ -31,14 +33,14 @@ public class Skydder : MonoBehaviour {
 
     //laser variables
     public bool takeDamageByLaser = false;
-    public float damageTimer = 0.5f;
+    public float damageTimer = 0.1f;
     private float resetDamageTimer;
 
 
 
     private void Start()
     {
-        resetDamageTimer = damageTimer;
+        
     }
 
     void Update() {
@@ -54,27 +56,27 @@ public class Skydder : MonoBehaviour {
 
         //Check if laser should render + shake the screen a little
         checkLaserActive();
+
+        updateFlameThrower();
     }
     void Fire() {
         //bomb
         if(pu.bomb) {
             BombMode();
         }
-
-
         //burst
         else if (pu.burstFire)
         {
             BurstMode();
         }
-
-
         else if (pu.laserFire)
         {
             LaserMode();
         }
-
-
+        else if (pu.flameFire)
+        {
+            FlameMode();
+        }
         //normal
         else {
             NormalMode();
@@ -95,8 +97,8 @@ public class Skydder : MonoBehaviour {
         GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
         bomb.GetComponent<Rigidbody2D>().AddForce(transform.up* BigBoySpeed);
 
-    onCoolDown = true;
-    Invoke("coolDown", coolDownTime);
+        onCoolDown = true;
+        Invoke("coolDown", coolDownTime);
     }
 
 
@@ -130,6 +132,22 @@ public class Skydder : MonoBehaviour {
         {
             lr.SetPosition(1, transform.up * 2000);
         }
+    }
+
+
+
+    private void FlameMode()
+    {
+        Instantiate(flameThrower, transform.position, quaternion.identity);
+
+    }
+
+
+
+
+    private void updateFlameThrower()
+    {
+        
     }
 
 

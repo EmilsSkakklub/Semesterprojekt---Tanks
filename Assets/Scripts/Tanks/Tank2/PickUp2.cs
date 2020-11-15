@@ -5,6 +5,10 @@ using UnityEngine;
 public class PickUp2 : MonoBehaviour {
     public PlayerMovement2 tank;
 
+    public BluePickUpTimer but;
+    public GameObject blueProcessBar;
+    public GameObject canon;
+
     public bool TakenBoost;                     //is true if a certain boost has been picked up
 
     public float SpeedUpAmount = 3f;             //amount the players velocity speeds up when picking up 'speed up'
@@ -18,36 +22,66 @@ public class PickUp2 : MonoBehaviour {
     public float BurstTime = 10f;               //timer for burst pick up
     public float LaserTime = 10f;               //timer for laser pick up
 
-
     public bool startShootNormalCooldown = false;
 
     public bool bomb = false;
     public bool burstFire = false;              //if true, player shoots a burst of bullets when firing
-    public bool shotgunFire = false;
     public bool laserFire = false;
+    public bool flameFire = false;
 
     private float OriginalSpeed;                //the original velocity of the player
     private float OriginalRotationSpeed;        //the original rotation speed of the player
-    
+
+    private float lerp = 0;
+
+
+    private void Start()
+    {
+        but = GameObject.Find("HealthBarBlue").GetComponentInChildren<BluePickUpTimer>();
+        blueProcessBar = GameObject.Find("BlueProcessBar");
+        canon = GameObject.Find("Canon2");
+    }
 
     private void Update()
     {
         delayCooldown();
+        ShowPickUpTimer();
+    }
+
+
+    private void ShowPickUpTimer()
+    {
+        blueProcessBar.SetActive(false);
+
+        if (burstFire)
+        {
+            blueProcessBar.SetActive(true);
+            but.updateSliderValue(BurstTime);
+        }
+        else if (laserFire)
+        {
+            blueProcessBar.SetActive(true);
+            but.updateSliderValue(LaserTime);
+        }
+        else if (bomb)
+        {
+            lerp += Time.deltaTime;
+            if (lerp >= 1)
+            {
+                lerp = 0;
+            }
+            canon.GetComponent<Renderer>().material.color = Color.LerpUnclamped(Color.black, Color.red, lerp);
+        }
+        else
+        {
+            canon.GetComponent<Renderer>().material.color = new Color32(49, 53, 50, 255);
+            blueProcessBar.SetActive(false); ;
+        }
     }
 
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "SpeedUp" && !TakenBoost) {
-            Debug.Log("UP taken");
-            Invoke("IsSpeededUp", 0);
-            Destroy(other.gameObject);
-        } 
-        else if (other.gameObject.tag == "SpeedDown" && !TakenBoost) {
-            Debug.Log("DOWN taken");
-            Invoke("IsSlowedDown", 0);
-            Destroy(other.gameObject);
-        } 
-        else if (other.gameObject.tag == "BombUp" && !TakenBoost) {
+        if(other.gameObject.tag == "BombUp" && !TakenBoost) {
 
             Debug.Log("bomb aquired");
             Bomb();
@@ -64,6 +98,13 @@ public class PickUp2 : MonoBehaviour {
             Laser();
             Destroy(other.gameObject);
         }
+        else if(other.gameObject.tag == "FlameThrower" && !TakenBoost)
+        {
+            Debug.Log("Flame Thrower");
+            FlameThrower();
+            Destroy(other.gameObject);
+        }
+
 
     }
     private void IsSpeededUp() {
@@ -89,12 +130,6 @@ public class PickUp2 : MonoBehaviour {
         TakenBoost = false;
     }    
     
-    private void Bomb()
-    {
-        bomb = true;
-        TakenBoost = true;
-    }
-
 
     private void ShootNormal() {
         startShootNormalCooldown = false;
@@ -102,6 +137,12 @@ public class PickUp2 : MonoBehaviour {
         bomb = false;
         burstFire = false;
         laserFire = false;
+        flameFire = false;
+    }
+    private void Bomb()
+    {
+        bomb = true;
+        TakenBoost = true;
     }
 
     private void Burst() {
@@ -116,6 +157,12 @@ public class PickUp2 : MonoBehaviour {
         TakenBoost = true;
     }
 
+
+    private void FlameThrower()
+    {
+        flameFire = true;
+        TakenBoost = true;
+    }
 
 
     private void delayCooldown()

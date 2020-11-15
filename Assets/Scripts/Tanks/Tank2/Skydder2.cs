@@ -29,7 +29,7 @@ public class Skydder2 : MonoBehaviour {
 
     //laser variables
     public bool takeDamageByLaser = false;
-    public float damageTimer = 0.5f;
+    public float damageTimer = 0.1f;
     private float resetDamageTimer;
 
 
@@ -52,30 +52,17 @@ public class Skydder2 : MonoBehaviour {
         checkLaserActive();
     }
     void Fire() {
-        //normal
         if (pu.bomb) {
-            BombShoot();
+            BombMode();
         }
-
-
         //burst
         else if (pu.burstFire) {
-            BurstShoot();
+            BurstMode();
         }
-
-
-        //shotgun 
-        else if (pu.shotgunFire) {
-            ShotgunShoot();
-        }
-
         else if (pu.laserFire)
         {
             LaserMode();
         }
-
-
-        //shooting bomb
         else {
             NormalShoot();
         }
@@ -91,7 +78,7 @@ public class Skydder2 : MonoBehaviour {
 
 
 
-    private void BombShoot() {
+    private void BombMode() {
         GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
         bomb.GetComponent<Rigidbody2D>().AddForce(transform.up * BigBoySpeed);
 
@@ -103,7 +90,7 @@ public class Skydder2 : MonoBehaviour {
 
 
 
-    private void BurstShoot() {
+    private void BurstMode() {
         int i = 0;
         float timeBetweenShots = 0;
 
@@ -133,7 +120,7 @@ public class Skydder2 : MonoBehaviour {
         {
             lr.SetPosition(1, new Vector3(hit.point.x, hit.point.y, transform.position.z));
             Instantiate(laserParticle, hit.point, quaternion.identity);
-            GameObject Lol = Instantiate(laserCollider, hit.point, quaternion.identity);
+            Instantiate(laserCollider, hit.point, quaternion.identity);
         }
         else
         {
@@ -172,7 +159,7 @@ public class Skydder2 : MonoBehaviour {
 
 
         //shooting cooldown
-        private void coolDown() {
+    private void coolDown() {
         onCoolDown = false;
     }
 
