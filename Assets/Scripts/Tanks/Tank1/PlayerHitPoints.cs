@@ -15,21 +15,18 @@ public class PlayerHitPoints : MonoBehaviour
 
     private HealthBarPink hpBar;
 
-    public GameObject damageText;
-
     public int PlayerHp = 100;
     public int BulletDmg = 3;
     public int BombDmg = 30;
     public int explosionDmg = 15;
-    public int laserDmg = 1;
-
-    private int TheDamage = 0;
+    public int laserDamage = 1;
 
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Score>();
         hpBar = GameObject.Find("Player1").GetComponentInChildren<HealthBarPink>();
         body = GameObject.Find("Body").GetComponent<Transform>();
+
 
         hpBar.setMaxHealth(PlayerHp);
     }
@@ -54,10 +51,10 @@ public class PlayerHitPoints : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Bullet") {
-            takeDamage(BulletDmg);
+            PlayerHp = PlayerHp - BulletDmg;
         }
         else if (other.gameObject.tag == "Bomb") {
-            takeDamage(BombDmg);
+            PlayerHp = PlayerHp - BombDmg;
         }
     }
 
@@ -68,28 +65,16 @@ public class PlayerHitPoints : MonoBehaviour
             if (!skydder.takeDamageByLaser)
             {
                 skydder.takeDamageByLaser = true;
-                takeDamage(laserDmg);
+                PlayerHp -= laserDamage;
             }  
         }
         else if (collision.gameObject.tag == "Explosion")
         {
             pm.stunned = true;
-            takeDamage(explosionDmg);
+            PlayerHp = PlayerHp - explosionDmg;
         }
     }
 
-    private void takeDamage(int damage)
-    {
-        System.Random rand = new System.Random();
-        PlayerHp = PlayerHp - damage;
-        Instantiate(damageText, gameObject.transform.position + new Vector3((float)rand.NextDouble()-0.5f, 1, 0), quaternion.identity);
-        TheDamage = damage;
-    }
-
-    public int getDamage()
-    {
-        return TheDamage;
-    }
 
 
 

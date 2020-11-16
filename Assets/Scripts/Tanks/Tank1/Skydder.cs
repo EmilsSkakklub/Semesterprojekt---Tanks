@@ -40,7 +40,7 @@ public class Skydder : MonoBehaviour {
 
     private void Start()
     {
-        resetDamageTimer = damageTimer;
+        
     }
 
     void Update() {
