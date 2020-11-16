@@ -425,6 +425,7 @@ MonoBehaviour:
   tank: {fileID: 5353080062960051142}
   but: {fileID: 0}
   blueProcessBar: {fileID: 0}
+  canon: {fileID: 0}
   TakenBoost: 0
   SpeedUpAmount: 3
   RotationSpeedUpAmount: 3
@@ -438,6 +439,7 @@ MonoBehaviour:
   bomb: 0
   burstFire: 0
   laserFire: 0
+  flameFire: 0
 --- !u!114 &1892217910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,11 +457,13 @@ MonoBehaviour:
   skydder: {fileID: 5353080063636157039}
   score: {fileID: 0}
   ps: {fileID: 6687237102704889235, guid: 5846a99b75d961e4088695a1b6e21297, type: 3}
+  damageText: {fileID: 3182179435044314654, guid: 31e237672a2f3f34bb0089e60081809f, type: 3}
   PlayerHp: 100
   BulletDmg: 3
   BombDmg: 50
   explosionDmg: 25
-  laserDamage: 1
+  laserDmg: 1
+  TheDamage: 0
 --- !u!1 &2363142808664406737
 GameObject:
   m_ObjectHideFlags: 0

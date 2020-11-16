@@ -53,7 +53,6 @@ MonoBehaviour:
   laserParticle: {fileID: 5455518161879815104, guid: 4fad5753e7713cd439c1a8dfeb0ccb32, type: 3}
   laserCollider: {fileID: 1858405436816079952, guid: 23a827622ad22374f9e40407d7b92250, type: 3}
   flameThrower: {fileID: 2919426433394035600, guid: 4d4994791ea0d244d865700023acab3f, type: 3}
-  rot: 0
   BurstAmount: 5
   projectileSpeed: 1000
   BigBoySpeed: 300
@@ -565,11 +564,12 @@ MonoBehaviour:
   skydder: {fileID: 1312563292}
   score: {fileID: 0}
   ps: {fileID: 6687237102704889235, guid: 5846a99b75d961e4088695a1b6e21297, type: 3}
+  damageText: {fileID: 5159980125799983817, guid: e3cabc60122373b4488356fb9e4e4fc4, type: 3}
   PlayerHp: 100
   BulletDmg: 3
   BombDmg: 50
   explosionDmg: 25
-  laserDamage: 1
+  laserDmg: 1
 --- !u!114 &81580623108831363
 MonoBehaviour:
   m_ObjectHideFlags: 0
