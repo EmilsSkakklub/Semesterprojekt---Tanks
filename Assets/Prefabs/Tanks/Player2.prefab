@@ -463,6 +463,7 @@ MonoBehaviour:
   BombDmg: 50
   explosionDmg: 25
   laserDmg: 1
+  fireDmg: 1
   TheDamage: 0
 --- !u!1 &2363142808664406737
 GameObject:
@@ -825,6 +826,7 @@ MonoBehaviour:
   BigBoy: {fileID: 3166402795608650637, guid: 9ec8affb613a6b54e9a97f3fe8a83e18, type: 3}
   pu: {fileID: 5353080063629635711}
   pm: {fileID: 5353080062960051142}
+  flameThrower: {fileID: 7421895882150589626, guid: eb01072aca6eed04192e2fbe4953122f, type: 3}
   lr: {fileID: 3501998574894152470}
   laserParticle: {fileID: 5455518161879815104, guid: 4fad5753e7713cd439c1a8dfeb0ccb32, type: 3}
   laserCollider: {fileID: 1858405436816079952, guid: 23a827622ad22374f9e40407d7b92250, type: 3}
@@ -837,6 +839,8 @@ MonoBehaviour:
   coolDownTimeBurst: 1
   takeDamageByLaser: 0
   damageTimer: 0.1
+  takeDamageByFT: 0
+  damageTimerFT: 0.2
 --- !u!120 &3501998574894152470
 LineRenderer:
   m_ObjectHideFlags: 0

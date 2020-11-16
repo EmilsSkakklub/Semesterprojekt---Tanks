@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
     public Rigidbody2D body;
     public GameObject indicator1, indicator2;
+    private PickUp pu;
 
     public float rotationSpeed = 5f;    //rotation speed
     public float maxVelocity = 4f;      //maximum velocity of player
@@ -35,6 +36,8 @@ public class PlayerMovement : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+
+        pu = GameObject.Find("Body").GetComponent<PickUp>();
         //remove gravity of the player
         Physics2D.gravity = Vector2.zero;
         
@@ -60,11 +63,11 @@ public class PlayerMovement : MonoBehaviour {
     private void rotate() {
         
         //rotate slower when pushing the fire button
-        if (ButtonShoot && ButtonLeftTurn)
+        if (ButtonShoot && ButtonLeftTurn && !pu.flameFire)
         {
             body.rotation += rotationSpeed/3;
         }
-        else if(ButtonShoot && ButtonRightTurn)
+        else if(ButtonShoot && ButtonRightTurn && !pu.flameFire)
         {
             body.rotation -= rotationSpeed/3;
         }

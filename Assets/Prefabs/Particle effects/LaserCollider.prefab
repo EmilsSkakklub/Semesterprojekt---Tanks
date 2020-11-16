@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4088141414257741904}
   - component: {fileID: -3651296333820954013}
   m_Layer: 0
-  m_Name: LaserHit
+  m_Name: LaserCollider
   m_TagString: LaserCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

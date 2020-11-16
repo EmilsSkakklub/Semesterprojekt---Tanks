@@ -36,11 +36,16 @@ public class Skydder : MonoBehaviour {
     public float damageTimer = 0.1f;
     private float resetDamageTimer;
 
+    //flame thrower variables
+    public bool takeDamageByFT = false;
+    public float damageTimerFT = 0.1f;
+    private float resetDamageTimerFT;
 
 
     private void Start()
     {
         resetDamageTimer = damageTimer;
+        resetDamageTimerFT = damageTimerFT;
     }
 
     void Update() {
@@ -57,7 +62,7 @@ public class Skydder : MonoBehaviour {
         //Check if laser should render + shake the screen a little
         checkLaserActive();
 
-        updateFlameThrower();
+        chackFlameThrower();
     }
     void Fire() {
         //bomb
@@ -91,7 +96,7 @@ public class Skydder : MonoBehaviour {
     }
 
 
-
+    
 
     private void BombMode() {
         GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
@@ -138,17 +143,31 @@ public class Skydder : MonoBehaviour {
 
     private void FlameMode()
     {
-        Instantiate(flameThrower, transform.position, quaternion.identity);
-
+        Instantiate(flameThrower, transform.position, transform.rotation);
     }
 
 
-
-
-    private void updateFlameThrower()
+    private void chackFlameThrower()
     {
-        
+        if (pm.ButtonShoot && pu.flameFire)
+        {
+            ssc.StartShake(0.02f, 0.02f);
+        }
+        //cooldown for player taking dmage by Flame Thrower
+        if (takeDamageByFT)
+        {
+            if (damageTimerFT > 0)
+            {
+                damageTimerFT -= Time.deltaTime;
+                if (damageTimerFT <= 0)
+                {
+                    takeDamageByFT = false;
+                    damageTimerFT = resetDamageTimerFT;
+                }
+            }
+        }
     }
+
 
 
 

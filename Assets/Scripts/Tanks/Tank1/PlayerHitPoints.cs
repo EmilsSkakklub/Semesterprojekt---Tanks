@@ -18,10 +18,11 @@ public class PlayerHitPoints : MonoBehaviour
     public GameObject damageText;
 
     public int PlayerHp = 100;
-    public int BulletDmg = 3;
-    public int BombDmg = 30;
-    public int explosionDmg = 15;
-    public int laserDmg = 1;
+    private int BulletDmg = 3;
+    private int BombDmg = 50;
+    private int explosionDmg = 25;
+    private int laserDmg = 1;
+    private int fireDmg = 2;
 
     private int TheDamage = 0;
 
@@ -78,6 +79,22 @@ public class PlayerHitPoints : MonoBehaviour
         }
     }
 
+
+    private void OnParticleCollision(GameObject collision)
+    {
+        if (collision.gameObject.tag == "FlameBlue")
+        {
+            if (!skydder.takeDamageByFT)
+            {
+                skydder.takeDamageByFT = true;
+                takeDamage(fireDmg);
+            }
+        }
+    }
+
+
+
+
     private void takeDamage(int damage)
     {
         System.Random rand = new System.Random();
@@ -90,8 +107,4 @@ public class PlayerHitPoints : MonoBehaviour
     {
         return TheDamage;
     }
-
-
-
-
 }

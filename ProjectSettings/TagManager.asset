@@ -19,7 +19,9 @@ TagManager:
   - Laser
   - LaserCollider
   - Explosion
-  - FlameThrower
+  - FlamePink
+  - FlameBlue
+  - FlamePickUp
   layers:
   - Default
   - TransparentFX

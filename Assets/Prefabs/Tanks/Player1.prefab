@@ -52,7 +52,7 @@ MonoBehaviour:
   lr: {fileID: 1045377974600570555}
   laserParticle: {fileID: 5455518161879815104, guid: 4fad5753e7713cd439c1a8dfeb0ccb32, type: 3}
   laserCollider: {fileID: 1858405436816079952, guid: 23a827622ad22374f9e40407d7b92250, type: 3}
-  flameThrower: {fileID: 2919426433394035600, guid: 4d4994791ea0d244d865700023acab3f, type: 3}
+  flameThrower: {fileID: 8569715584936105073, guid: 4d4994791ea0d244d865700023acab3f, type: 3}
   BurstAmount: 5
   projectileSpeed: 1000
   BigBoySpeed: 300

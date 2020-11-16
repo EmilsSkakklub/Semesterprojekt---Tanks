@@ -21,6 +21,7 @@ public class PickUp2 : MonoBehaviour {
     public float SpeedDownTime = 10f;           //timer for speed down pick up
     public float BurstTime = 10f;               //timer for burst pick up
     public float LaserTime = 10f;               //timer for laser pick up
+    public float FlameTimer = 10f;
 
     public bool startShootNormalCooldown = false;
 
@@ -72,6 +73,12 @@ public class PickUp2 : MonoBehaviour {
             }
             canon.GetComponent<Renderer>().material.color = Color.LerpUnclamped(Color.black, Color.red, lerp);
         }
+        else if (flameFire)
+        {
+            blueProcessBar.SetActive(true);
+            but.updateSliderValue(FlameTimer);
+        }
+
         else
         {
             canon.GetComponent<Renderer>().material.color = new Color32(49, 53, 50, 255);
@@ -98,7 +105,7 @@ public class PickUp2 : MonoBehaviour {
             Laser();
             Destroy(other.gameObject);
         }
-        else if(other.gameObject.tag == "FlameThrower" && !TakenBoost)
+        else if(other.gameObject.tag == "FlamePickUp" && !TakenBoost)
         {
             Debug.Log("Flame Thrower");
             FlameThrower();
@@ -201,6 +208,18 @@ public class PickUp2 : MonoBehaviour {
             if (tank.ButtonShoot)
             {
                 ShootNormal();
+            }
+        }
+        if (flameFire)
+        {
+            if (tank.ButtonShoot)
+            {
+                FlameTimer -= Time.deltaTime;
+                if (FlameTimer <= 0)
+                {
+                    ShootNormal();
+                    FlameTimer = 10f;
+                }
             }
         }
     }

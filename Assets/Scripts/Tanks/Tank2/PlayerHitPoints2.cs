@@ -17,10 +17,12 @@ public class PlayerHitPoints2 : MonoBehaviour {
     public GameObject damageText;
 
     public int PlayerHp = 100;
-    public int BulletDmg = 3;
-    public int BombDmg = 30;
-    public int explosionDmg = 15;
-    public int laserDmg = 1;
+    private int BulletDmg = 3;
+    private int BombDmg = 50;
+    private int explosionDmg = 25;
+    private int laserDmg = 1;
+    private int fireDmg = 2;
+
 
     public int TheDamage = 0;
 
@@ -75,8 +77,20 @@ public class PlayerHitPoints2 : MonoBehaviour {
             pm.stunned = true;
             takeDamage(explosionDmg);
         }
-
     }
+
+    private void OnParticleCollision(GameObject collision)
+    {
+        if(collision.gameObject.tag == "FlamePink")
+        {
+            if (!skydder.takeDamageByFT)
+            {
+                skydder.takeDamageByFT = true;
+                takeDamage(fireDmg);
+            }
+        }
+    }
+
 
 
     private void takeDamage(int damage)
@@ -91,6 +105,7 @@ public class PlayerHitPoints2 : MonoBehaviour {
     {
         return TheDamage;
     }
+
 
 }
 

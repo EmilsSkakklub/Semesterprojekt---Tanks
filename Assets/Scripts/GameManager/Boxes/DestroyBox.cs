@@ -17,6 +17,10 @@ public class DestroyBox : MonoBehaviour {
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+        if (other.gameObject.tag == "LaserCollider")
+        {
+            Debug.Log("Destroyed by laser");
+        }
     }
 
 
@@ -24,13 +28,12 @@ public class DestroyBox : MonoBehaviour {
     //VIRKER IKKE?????????????
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("LaserCollider"))
+        if (collision.gameObject.tag == "LaserCollider")
         {
-            GameObject PickupSpawn = Instantiate(Pickups[Random.Range(0, Pickups.Length)], transform.position, transform.rotation) as GameObject;
-            bs.BoxCount--;
-            Destroy(gameObject);
-            print("Destroyed by laser");
+
+            Debug.Log("Destroyed by laser");
         }
     }
+
 
 }

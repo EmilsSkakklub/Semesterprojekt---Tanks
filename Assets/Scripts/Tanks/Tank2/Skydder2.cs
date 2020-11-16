@@ -12,6 +12,8 @@ public class Skydder2 : MonoBehaviour {
     public PickUp2 pu;
     public PlayerMovement2 pm;
 
+    public ParticleSystem flameThrower;
+
     public LineRenderer lr;
     public ParticleSystem laserParticle;
     public GameObject laserCollider;
@@ -32,10 +34,16 @@ public class Skydder2 : MonoBehaviour {
     public float damageTimer = 0.1f;
     private float resetDamageTimer;
 
+    //flame thrower variables
+    public bool takeDamageByFT = false;
+    public float damageTimerFT = 0.1f;
+    private float resetDamageTimerFT;
+
 
     private void Start()
     {
         resetDamageTimer = damageTimer;
+        resetDamageTimerFT = damageTimerFT;
     }
 
     void Update() {
@@ -50,6 +58,8 @@ public class Skydder2 : MonoBehaviour {
         }
         //Check if laser should render + shake the screen a little
         checkLaserActive();
+
+        checkFlameThrower();
     }
     void Fire() {
         if (pu.bomb) {
@@ -62,6 +72,10 @@ public class Skydder2 : MonoBehaviour {
         else if (pu.laserFire)
         {
             LaserMode();
+        }
+        else if (pu.flameFire)
+        {
+            FlameMode();
         }
         else {
             NormalShoot();
@@ -129,6 +143,15 @@ public class Skydder2 : MonoBehaviour {
     }
 
 
+
+    private void FlameMode()
+    {
+        Instantiate(flameThrower, transform.position, transform.rotation);
+
+    }
+
+
+
     private void checkLaserActive()
     {
         if (pm.ButtonShoot && pu.laserFire)
@@ -150,6 +173,28 @@ public class Skydder2 : MonoBehaviour {
                 {
                     takeDamageByLaser = false;
                     damageTimer = resetDamageTimer;
+                }
+            }
+        }
+    }
+
+    private void checkFlameThrower()
+    {
+        if (pm.ButtonShoot && pu.flameFire)
+        {
+            ssc.StartShake(0.02f, 0.02f);
+        }
+
+        //cooldown for player taking dmage by Flame Thrower
+        if (takeDamageByFT)
+        {
+            if (damageTimerFT > 0)
+            {
+                damageTimerFT -= Time.deltaTime;
+                if (damageTimerFT <= 0)
+                {
+                    takeDamageByFT = false;
+                    damageTimerFT = resetDamageTimerFT;
                 }
             }
         }
