@@ -821,7 +821,7 @@ MonoBehaviour:
   ssc: {fileID: 0}
   Projectile: {fileID: 2386720261022611104, guid: a8670ddb6c983bb49b69d6e08fc95c4b, type: 3}
   BigBoy: {fileID: 3166402795608650637, guid: 9ec8affb613a6b54e9a97f3fe8a83e18, type: 3}
-  HomingMissile: {fileID: 7408823165779232556, guid: 2aacd8d4873166649867e75ab9e512e3, type: 3}
+  HomingMissile: {fileID: 2618906204128351142, guid: a0987e72eef1b0d4ab7b28f9f0abf3db, type: 3}
   pu: {fileID: 5353080063629635711}
   pm: {fileID: 5353080062960051142}
   flameThrower: {fileID: 7421895882150589626, guid: eb01072aca6eed04192e2fbe4953122f, type: 3}

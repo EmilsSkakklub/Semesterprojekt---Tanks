@@ -4,10 +4,9 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 
-public class HMScript5 : MonoBehaviour
+public class HMScript1 : MonoBehaviour
 {
-    public GameObject player1, player2;
-    public Transform target;
+    private Transform target;
 
     public float speed = 5f;
     public float rotateSpeed = 200f;
