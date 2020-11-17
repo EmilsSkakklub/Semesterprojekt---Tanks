@@ -9,6 +9,7 @@ public class Skydder2 : MonoBehaviour {
 
     public GameObject Projectile;
     public GameObject BigBoy;
+    public GameObject HomingMissile;
     public PickUp2 pu;
     public PlayerMovement2 pm;
 
@@ -76,6 +77,10 @@ public class Skydder2 : MonoBehaviour {
         else if (pu.flameFire)
         {
             FlameMode();
+        }
+        else if (pu.homingFire)
+        {
+            HomingMissileMode();
         }
         else {
             NormalShoot();
@@ -148,6 +153,14 @@ public class Skydder2 : MonoBehaviour {
     {
         Instantiate(flameThrower, transform.position, transform.rotation);
 
+    }
+
+
+    private void HomingMissileMode()
+    {
+        Instantiate(HomingMissile, transform.position, transform.rotation);
+        onCoolDown = true;
+        Invoke("coolDown", coolDownTime);
     }
 
 

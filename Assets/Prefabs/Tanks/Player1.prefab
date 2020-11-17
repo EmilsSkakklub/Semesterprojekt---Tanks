@@ -47,6 +47,7 @@ MonoBehaviour:
   ssc: {fileID: 0}
   Projectile: {fileID: 5005981077604767533, guid: 7e8763a4c67355441b67121f8feaa59f, type: 3}
   BigBoy: {fileID: 3166402795608650637, guid: 9ec8affb613a6b54e9a97f3fe8a83e18, type: 3}
+  HomingMissile: {fileID: 7408823165779232556, guid: 2aacd8d4873166649867e75ab9e512e3, type: 3}
   pu: {fileID: 1123115395}
   pm: {fileID: 7674806845619064777}
   lr: {fileID: 1045377974600570555}
@@ -62,6 +63,8 @@ MonoBehaviour:
   coolDownTimeBurst: 1
   takeDamageByLaser: 0
   damageTimer: 0.1
+  takeDamageByFT: 0
+  damageTimerFT: 0.1
 --- !u!120 &1045377974600570555
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -530,9 +533,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tank: {fileID: 7674806845619064777}
-  put: {fileID: 0}
-  pinkProcessBar: {fileID: 0}
-  canon: {fileID: 0}
   TakenBoost: 0
   SpeedUpAmount: 0
   RotationSpeedUpAmount: 10
@@ -542,11 +542,13 @@ MonoBehaviour:
   SpeedDownTime: 10
   BurstTime: 10
   LaserTime: 10
+  FlameTimer: 10
   startShootNormalCooldown: 0
   bomb: 0
   burstFire: 0
   laserFire: 0
   flameFire: 0
+  homingFire: 0
 --- !u!114 &1351415215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,10 +568,6 @@ MonoBehaviour:
   ps: {fileID: 6687237102704889235, guid: 5846a99b75d961e4088695a1b6e21297, type: 3}
   damageText: {fileID: 5159980125799983817, guid: e3cabc60122373b4488356fb9e4e4fc4, type: 3}
   PlayerHp: 100
-  BulletDmg: 3
-  BombDmg: 50
-  explosionDmg: 25
-  laserDmg: 1
 --- !u!114 &81580623108831363
 MonoBehaviour:
   m_ObjectHideFlags: 0

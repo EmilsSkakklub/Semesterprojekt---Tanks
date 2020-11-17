@@ -11,6 +11,7 @@ public class Skydder : MonoBehaviour {
 
     public GameObject Projectile;
     public GameObject BigBoy;
+    public GameObject HomingMissile;
     public PickUp pu;
     public PlayerMovement pm;
 
@@ -82,6 +83,10 @@ public class Skydder : MonoBehaviour {
         {
             FlameMode();
         }
+        else if (pu.homingFire)
+        {
+            HomingMissileFire();
+        }
         //normal
         else {
             NormalMode();
@@ -147,6 +152,16 @@ public class Skydder : MonoBehaviour {
     }
 
 
+    private void HomingMissileFire()
+    {
+        Instantiate(HomingMissile, transform.position, gameObject.transform.rotation);
+        onCoolDown = true;
+        Invoke("coolDown", coolDownTime);
+    }
+
+
+
+
     private void chackFlameThrower()
     {
         if (pm.ButtonShoot && pu.flameFire)
@@ -210,5 +225,6 @@ public class Skydder : MonoBehaviour {
         GameObject bullet = Instantiate(Projectile, transform.position, gameObject.transform.rotation) as GameObject;
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileSpeed);
     }
+
 
 }

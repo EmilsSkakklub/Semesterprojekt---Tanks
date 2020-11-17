@@ -29,6 +29,7 @@ public class PickUp2 : MonoBehaviour {
     public bool burstFire = false;              //if true, player shoots a burst of bullets when firing
     public bool laserFire = false;
     public bool flameFire = false;
+    public bool homingFire = false;
 
     private float OriginalSpeed;                //the original velocity of the player
     private float OriginalRotationSpeed;        //the original rotation speed of the player
@@ -78,6 +79,10 @@ public class PickUp2 : MonoBehaviour {
             blueProcessBar.SetActive(true);
             but.updateSliderValue(FlameTimer);
         }
+        else if (homingFire)
+        {
+
+        }
 
         else
         {
@@ -111,6 +116,13 @@ public class PickUp2 : MonoBehaviour {
             FlameThrower();
             Destroy(other.gameObject);
         }
+        else if (other.gameObject.tag == "HomingMissile" && !TakenBoost)
+        {
+            Debug.Log("Homing Missile aquired");
+            HomingMissile();
+            Destroy(other.gameObject);
+        }
+
 
 
     }
@@ -145,6 +157,7 @@ public class PickUp2 : MonoBehaviour {
         burstFire = false;
         laserFire = false;
         flameFire = false;
+        homingFire = false;
     }
     private void Bomb()
     {
@@ -168,6 +181,12 @@ public class PickUp2 : MonoBehaviour {
     private void FlameThrower()
     {
         flameFire = true;
+        TakenBoost = true;
+    }
+
+    private void HomingMissile()
+    {
+        homingFire = true;
         TakenBoost = true;
     }
 
@@ -220,6 +239,13 @@ public class PickUp2 : MonoBehaviour {
                     ShootNormal();
                     FlameTimer = 10f;
                 }
+            }
+        }
+        if (homingFire)
+        {
+            if (tank.ButtonShoot)
+            {
+                ShootNormal();
             }
         }
     }

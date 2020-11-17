@@ -23,15 +23,13 @@ public class DestroyBox : MonoBehaviour {
         }
     }
 
-
-    //Destroy box when hit by laser
-    //VIRKER IKKE?????????????
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "LaserCollider")
         {
-
-            Debug.Log("Destroyed by laser");
+            GameObject PickupSpawn = Instantiate(Pickups[Random.Range(0, Pickups.Length)], transform.position, transform.rotation) as GameObject;
+            bs.BoxCount--;
+            Destroy(gameObject);
         }
     }
 

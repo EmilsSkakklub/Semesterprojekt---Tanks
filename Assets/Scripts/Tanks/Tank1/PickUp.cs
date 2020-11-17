@@ -5,9 +5,9 @@ using UnityEngine;
 public class PickUp : MonoBehaviour{
     public PlayerMovement tank;
 
-    public PinkPickUpTimer put;
-    public GameObject pinkProcessBar;
-    public GameObject canon;
+    private PinkPickUpTimer put;
+    private GameObject pinkProcessBar;
+    private GameObject canon;
 
 
     public bool TakenBoost;                     //is true if a certain boost has been picked up
@@ -30,6 +30,7 @@ public class PickUp : MonoBehaviour{
     public bool burstFire = false;              //if true, player shoots a burst of bullets when firing
     public bool laserFire = false;
     public bool flameFire = false;
+    public bool homingFire = false;
 
     private float OriginalSpeed;                //the original velocity of the player
     private float OriginalRotationSpeed;        //the original rotation speed of the player
@@ -81,6 +82,10 @@ public class PickUp : MonoBehaviour{
             pinkProcessBar.SetActive(true);
             put.updateSliderValue(FlameTimer);
         }
+        else if (homingFire)
+        {
+            
+        }
 
         else
         {
@@ -118,7 +123,14 @@ public class PickUp : MonoBehaviour{
             FlameThrower();
             Destroy(other.gameObject);
         }
+        else if(other.gameObject.tag == "HomingMissile" && !TakenBoost)
+        {
+            Debug.Log("Homing Missile");
+            HomingMissile();
+            Destroy(other.gameObject);
+        }
     }
+
     private void IsSpeededUp()
     {
         OriginalSpeed = tank.maxVelocity;
@@ -155,6 +167,7 @@ public class PickUp : MonoBehaviour{
         burstFire = false;
         laserFire = false;
         flameFire = false;
+        homingFire = false;
     }
 
 
@@ -180,6 +193,12 @@ public class PickUp : MonoBehaviour{
     private void FlameThrower()
     {
         flameFire = true;
+        TakenBoost = true;
+    }
+
+    private void HomingMissile()
+    {
+        homingFire = true;
         TakenBoost = true;
     }
 
@@ -237,6 +256,14 @@ public class PickUp : MonoBehaviour{
                     ShootNormal();
                     FlameTimer = 10f;
                 }
+            }
+        }
+
+        if (homingFire)
+        {
+            if (tank.ButtonShoot)
+            {
+                ShootNormal();
             }
         }
 
