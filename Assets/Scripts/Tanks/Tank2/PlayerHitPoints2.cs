@@ -22,6 +22,7 @@ public class PlayerHitPoints2 : MonoBehaviour {
     private int explosionDmg = 25;
     private int laserDmg = 1;
     private int fireDmg = 2;
+    private int HMDMG = 10;
 
 
     public int TheDamage = 0;
@@ -58,7 +59,11 @@ public class PlayerHitPoints2 : MonoBehaviour {
         }
         else if (other.gameObject.tag == "Bomb") {
             takeDamage(BombDmg);
-        } 
+        }
+        else if (other.gameObject.tag == "HomingMissile")
+        {
+            takeDamage(HMDMG);
+        }
     }
 
 

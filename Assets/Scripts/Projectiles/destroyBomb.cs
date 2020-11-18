@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class destroyBomb : MonoBehaviour {
 
-    public GameObject explotionSpawnPoint;
+    public GameObject explosionSpawnPoint;
     public GameObject explosion;
     public ParticleSystem nukeParicle;
 
@@ -16,22 +16,22 @@ public class destroyBomb : MonoBehaviour {
         if (other.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
-            Instantiate(explosion, explotionSpawnPoint.transform.position, quaternion.identity);
-            Instantiate(nukeParicle, explotionSpawnPoint.transform.position, quaternion.identity);
+            Instantiate(explosion, explosionSpawnPoint.transform.position, quaternion.identity);
+            Instantiate(nukeParicle, explosionSpawnPoint.transform.position, quaternion.identity);
 
         }
         else if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            Instantiate(explosion, explotionSpawnPoint.transform.position, quaternion.identity);
-            Instantiate(nukeParicle, explotionSpawnPoint.transform.position, quaternion.identity);
+            Instantiate(explosion, explosionSpawnPoint.transform.position, quaternion.identity);
+            Instantiate(nukeParicle, explosionSpawnPoint.transform.position, quaternion.identity);
 
         }
         else if (other.gameObject.tag == "Bomb")
         {
             Destroy(gameObject);
-            Instantiate(explosion, explotionSpawnPoint.transform.position, quaternion.identity);
-            Instantiate(nukeParicle, explotionSpawnPoint.transform.position, quaternion.identity);
+            Instantiate(explosion, explosionSpawnPoint.transform.position, quaternion.identity);
+            Instantiate(nukeParicle, explosionSpawnPoint.transform.position, quaternion.identity);
         }
     }
 
