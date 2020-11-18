@@ -33,5 +33,15 @@ public class DestroyBox : MonoBehaviour {
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.tag == "FlameBlue" || other.gameObject.tag == "FlamePink")
+        {
+            GameObject PickupSpawn = Instantiate(Pickups[Random.Range(0, Pickups.Length)], transform.position, transform.rotation) as GameObject;
+            bs.BoxCount--;
+            Destroy(gameObject);
+        }
+    }
+
 
 }
