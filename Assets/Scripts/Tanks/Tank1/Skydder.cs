@@ -121,7 +121,7 @@ public class Skydder : MonoBehaviour {
             i++;
             timeBetweenShots += 0.1f;
         }
-
+        pu.BurstTime -= 2;
         onCoolDown = true;
         Invoke("coolDown", coolDownTimeBurst);
     }

@@ -210,20 +210,14 @@ public class PickUp : MonoBehaviour{
     {
         if (burstFire)
         {
-            if (tank.ButtonShoot)
+            if(BurstTime <= 0)
             {
-                startShootNormalCooldown = true;
+                ShootNormal();
+                BurstTime = 10f;
             }
-            if (startShootNormalCooldown)
-            {
-                BurstTime -= Time.deltaTime;
-                if (BurstTime <= 0)
-                {
-                    ShootNormal();
-                    BurstTime = 10f;
-                }
-            }
+                    
         }
+    
 
         if (laserFire)
         {
