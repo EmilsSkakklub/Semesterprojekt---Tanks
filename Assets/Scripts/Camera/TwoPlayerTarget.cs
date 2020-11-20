@@ -70,10 +70,12 @@ public class TwoPlayerTarget : MonoBehaviour{
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
 
 
-
         distance = Vector3.Distance(GlobalCoordPlayer1.position, GlobalCoordPlayer2.position); //Finds the distance between the players
+
+
         if (Mathf.Abs(GlobalCoordPlayer1.position.x) - Mathf.Abs(GlobalCoordPlayer2.position.x) <= differenceX && distance >= maxDistance || //if the distance between the players is long enough and theyre above each other, zoom out.
-            Mathf.Abs(GlobalCoordPlayer2.position.x) - Mathf.Abs(GlobalCoordPlayer1.position.x) <= differenceX && distance >= maxDistance) {
+            Mathf.Abs(GlobalCoordPlayer2.position.x) - Mathf.Abs(GlobalCoordPlayer1.position.x) <= differenceX && distance >= maxDistance) 
+            {
             zoomLimiter = 0.1f;
         } else {
             zoomLimiter = 12f; //if not, be normal
