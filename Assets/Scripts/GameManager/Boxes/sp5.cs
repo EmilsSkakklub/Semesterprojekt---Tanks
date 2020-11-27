@@ -13,7 +13,12 @@ public class sp5 : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Box") {
+        if (other.gameObject.tag == "Box" ||
+            other.gameObject.tag == "BombUp" ||
+            other.gameObject.tag == "Burst" ||
+            other.gameObject.tag == "FlamePickUp" ||
+            other.gameObject.tag == "HomingMissile" ||
+            other.gameObject.tag == "Laser" ) {
             Debug.Log("SP5 TAKEN");
             SpawnAvaliable5 = false;
             bs.stopRemoving5 = false;
@@ -21,7 +26,12 @@ public class sp5 : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Box") {
+        if (other.gameObject.tag == "Box" ||
+            other.gameObject.tag == "BombUp" ||
+            other.gameObject.tag == "Burst" ||
+            other.gameObject.tag == "FlamePickUp" ||
+            other.gameObject.tag == "HomingMissile" ||
+            other.gameObject.tag == "Laser" ) {
             Debug.Log("SP5 FREE");
             SpawnAvaliable5 = true;
             bs.stopAdding5 = false;

@@ -12,7 +12,7 @@ public class Boxspawner : MonoBehaviour {
     private float counter = 0f;
     public float BoxResetTime = 5f;
 
-    private int lastSpawnPointIndex = -1;
+    private bool NoSpawnsAvaliable = false;
 
     public Transform spawn1;
     public Transform spawn2;
@@ -47,23 +47,13 @@ public class Boxspawner : MonoBehaviour {
     public bool stopRemoving6 = true;
     public bool stopAdding6 = true;
 
-
-    private void Start() {                                  // Starts with max amount of boxes
-        while (BoxCount < BoxMax) {
-            SpawnBox();
-        }
-        
-
-    }
     void Update() {                                         // Spawns box' till the max is reached
-        if (BoxCount < BoxMax) {
-            if (counter < BoxResetTime) {
-                counter += Time.deltaTime;
-            } else {
-                counter = 0;
-                SpawnBox();
-            }
+        if (spawnPointsTransform.Count == 0) {
+            NoSpawnsAvaliable = true;
+        } else {
+            NoSpawnsAvaliable = false;
         }
+
         //----------------------------------------------------------------
         if (!sp1.SpawnAvaliable1 && !stopRemoving1) {                  //1
             stopRemoving1 = true;
@@ -120,15 +110,29 @@ public class Boxspawner : MonoBehaviour {
         }
         //-----------------------------------------------------------------
     }
-        public void SpawnBox() {                                                     // Spawns a box                                   
-        BoxCount++; 
-        Transform spawnPoint = GetNextSpawnPoint();
-        GameObject prefab = box;
-        Instantiate(prefab, spawnPoint.position, Quaternion.identity, pool);
+    private void LateUpdate() {
+        if (NoSpawnsAvaliable == false) {
+            if (BoxCount < BoxMax) {
+                if (counter < BoxResetTime) {
+                    counter += Time.deltaTime;
+                } else {
+                    counter = 0;
+                    SpawnBox();
+                }
+            }
+        }
+    }
+    public void SpawnBox() {                                                     // Spawns a box                                   
+        if (NoSpawnsAvaliable == false) {
+            BoxCount++;
+            Transform spawnPoint = GetNextSpawnPoint();
+            GameObject prefab = box;
+            Instantiate(prefab, spawnPoint.position, Quaternion.identity, pool);
+        }
+        
     }
     private Transform GetNextSpawnPoint() {                                         //Prevents spawning on the same position as previous spawn                             
-        int index = (lastSpawnPointIndex + Random.Range(1, spawnPointsTransform.Count - 1)) % spawnPointsTransform.Count;
-        lastSpawnPointIndex = index;
+        int index = Random.Range(0, spawnPointsTransform.Count);
         return spawnPointsTransform[index];
     }
 } 

@@ -6,6 +6,7 @@ public class DestroyBox : MonoBehaviour {
 
     public GameObject[] Pickups;
     public Boxspawner bs;
+    bool OnlyOnce = false;
 
     public void Awake() {
         bs = GameObject.Find("GameManager").GetComponent<Boxspawner>();
@@ -25,10 +26,12 @@ public class DestroyBox : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "LaserCollider")
+        if (collision.gameObject.tag == "LaserCollider" && OnlyOnce == false)
         {
             GameObject PickupSpawn = Instantiate(Pickups[Random.Range(0, Pickups.Length)], transform.position, transform.rotation) as GameObject;
+            OnlyOnce = true;
             bs.BoxCount--;
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }

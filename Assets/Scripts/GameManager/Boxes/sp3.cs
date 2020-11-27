@@ -12,7 +12,12 @@ public class sp3 : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Box") {
+        if (other.gameObject.tag == "Box" ||
+            other.gameObject.tag == "BombUp" ||
+            other.gameObject.tag == "Burst" ||
+            other.gameObject.tag == "FlamePickUp" ||
+            other.gameObject.tag == "HomingMissile" ||
+            other.gameObject.tag == "Laser" ) {
             Debug.Log("SP3 TAKEN");
             SpawnAvaliable3 = false;
             bs.stopRemoving3 = false;
@@ -20,7 +25,12 @@ public class sp3 : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Box") {
+        if (other.gameObject.tag == "Box" ||
+            other.gameObject.tag == "BombUp" ||
+            other.gameObject.tag == "Burst" ||
+            other.gameObject.tag == "FlamePickUp" ||
+            other.gameObject.tag == "HomingMissile" ||
+            other.gameObject.tag == "Laser" ) {
             Debug.Log("SP3 FREE");
             SpawnAvaliable3 = true;
             bs.stopAdding3 = false;
