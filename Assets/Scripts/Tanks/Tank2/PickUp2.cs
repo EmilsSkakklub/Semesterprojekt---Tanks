@@ -81,7 +81,11 @@ public class PickUp2 : MonoBehaviour {
         }
         else if (homingFire)
         {
-
+            lerp += Time.deltaTime;
+            if (lerp >= 1) {
+                lerp = 0;
+            }
+            canon.GetComponent<Renderer>().material.color = Color.LerpUnclamped(Color.black, Color.blue, lerp);
         }
 
         else

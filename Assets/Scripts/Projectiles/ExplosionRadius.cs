@@ -10,8 +10,6 @@ public class ExplosionRadius : MonoBehaviour
 
     private int explosionRadius = 15;
     private float explosionSpeed = 30f;
-    private Color colorStart = Color.black;
-    private Color colorEnd = Color.red;
 
 
     // Update is called once per frame

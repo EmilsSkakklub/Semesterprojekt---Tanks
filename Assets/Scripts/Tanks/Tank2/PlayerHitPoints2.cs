@@ -17,11 +17,11 @@ public class PlayerHitPoints2 : MonoBehaviour {
     public GameObject damageText;
 
     public int PlayerHp = 100;
-    private int BulletDmg = 3;
+    private int BulletDmg = 5;
     private int BombDmg = 50;
     private int explosionDmg = 25;
     private int laserDmg = 1;
-    private int fireDmg = 2;
+    private int fireDmg = 4;
     private int HMDMG = 10;
 
 

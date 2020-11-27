@@ -22,6 +22,9 @@ public class CollideWithBullet : MonoBehaviour
         else if(other.gameObject.tag == "Bomb") {
             ssc.StartShake(ssc.bigLength, ssc.bigPower);
         }
+        else if(other.gameObject.tag == "HomingMissile") {
+            ssc.StartShake(ssc.mediumLengh, ssc.mediumPower);
+        }
 
     }
 }

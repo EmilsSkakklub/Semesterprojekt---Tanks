@@ -9,8 +9,11 @@ public class ScreenShakeController : MonoBehaviour
     public float rotationMultiplier = 7.5f;
     public float length = .1f;
     public float power = .1f;
+    public float mediumLengh = .5f;
+    public float mediumPower = .5f;
     public float bigLength = 1f;
     public float bigPower = 1f;
+
  
 
     private void LateUpdate() {
