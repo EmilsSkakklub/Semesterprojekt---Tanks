@@ -8,6 +8,7 @@ public class DestroyBox : MonoBehaviour {
     public GameObject[] Pickups;
     public Boxspawner bs;
     bool OnlyOnce = false;
+    bool OnlyOnce2 = false;
 
     public ParticleSystem ps;
     
@@ -29,7 +30,7 @@ public class DestroyBox : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "LaserCollider" && OnlyOnce == false)
+        if (collision.gameObject.tag == "LaserCollider" && !OnlyOnce)
         {
             GameObject PickupSpawn = Instantiate(Pickups[Random.Range(0, Pickups.Length)], transform.position, transform.rotation) as GameObject;
             OnlyOnce = true;
@@ -42,9 +43,10 @@ public class DestroyBox : MonoBehaviour {
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.gameObject.tag == "FlameBlue" || other.gameObject.tag == "FlamePink")
+        if ((other.gameObject.tag == "FlameBlue" || other.gameObject.tag == "FlamePink") && !OnlyOnce2)
         {
             GameObject PickupSpawn = Instantiate(Pickups[Random.Range(0, Pickups.Length)], transform.position, transform.rotation) as GameObject;
+            OnlyOnce2 = true;
             bs.BoxCount--;
             BoxDestroyAnimation();
             Destroy(gameObject);
