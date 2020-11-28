@@ -11,6 +11,7 @@ public class StartGame : MonoBehaviour
         mc = GameObject.Find("MapChanger").GetComponent<MapChange>();
     }
     void OnMouseDown() {
+
         mc.LoadRandomMap();
     }
 

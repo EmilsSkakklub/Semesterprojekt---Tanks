@@ -63,7 +63,16 @@ public class destroyBullet : MonoBehaviour
         }
     }
 
-    private void destroyObject()
+    private void OnParticleCollision(GameObject collision) {
+        if(collision.gameObject.tag == "FlameBlue" || collision.gameObject.tag == "FlamePink") {
+            removeBullet();
+        }
+    }
+
+
+
+
+        private void destroyObject()
     {
         Destroy(gameObject);
     }
