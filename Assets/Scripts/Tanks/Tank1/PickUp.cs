@@ -240,7 +240,7 @@ public class PickUp : MonoBehaviour{
         {
             if (tank.ButtonShoot)
             {
-                ShootNormal();
+                Invoke("ShootNormal",0.1f);
             }
         }
 
@@ -261,7 +261,7 @@ public class PickUp : MonoBehaviour{
         {
             if (tank.ButtonShoot)
             {
-                ShootNormal();
+                Invoke("ShootNormal", 0.1f);
             }
         }
 

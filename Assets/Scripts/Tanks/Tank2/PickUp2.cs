@@ -224,7 +224,7 @@ public class PickUp2 : MonoBehaviour {
         {
             if (tank.ButtonShoot)
             {
-                ShootNormal();
+                Invoke("ShootNormal", 0.1f);
             }
         }
         if (flameFire)
@@ -243,7 +243,7 @@ public class PickUp2 : MonoBehaviour {
         {
             if (tank.ButtonShoot)
             {
-                ShootNormal();
+                Invoke("ShootNormal", 0.1f);
             }
         }
     }

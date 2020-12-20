@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &136682307
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &446711627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &680426344
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &704871540
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &757509717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &826415329
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &890527268
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -757,6 +757,14 @@ PrefabInstance:
       propertyPath: ssc
       value: 
       objectReference: {fileID: 84695800}
+    - target: {fileID: 7355374562227846606, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355374562227846606, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7674806844601493045, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.32691607
@@ -825,6 +833,14 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: -0.4770002
       objectReference: {fileID: 0}
+    - target: {fileID: 8654976979893158055, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654976979893158055, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8453d28aa9c4034ba0029fa5ae0c693, type: 3}
 --- !u!1001 &1224028558
@@ -842,6 +858,14 @@ PrefabInstance:
       propertyPath: sps
       value: 
       objectReference: {fileID: 1850514764}
+    - target: {fileID: 1912719730854312191, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912719730854312191, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2363142808201636649, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0
@@ -926,6 +950,14 @@ PrefabInstance:
       propertyPath: ssc
       value: 
       objectReference: {fileID: 84695800}
+    - target: {fileID: 6756296053948530132, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6756296053948530132, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df6b5495a722ef74f9a620c50293ce55, type: 3}
 --- !u!1001 &1284905583
@@ -942,7 +974,7 @@ PrefabInstance:
     - target: {fileID: 442011882, guid: add8d8655ee94410bb908e4f34e1dca3, type: 3}
       propertyPath: ssc
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 84695800}
     - target: {fileID: 1578998124, guid: add8d8655ee94410bb908e4f34e1dca3, type: 3}
       propertyPath: skydder
       value: 
@@ -950,7 +982,7 @@ PrefabInstance:
     - target: {fileID: 1578998124, guid: add8d8655ee94410bb908e4f34e1dca3, type: 3}
       propertyPath: ssc
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 84695800}
     - target: {fileID: 1585094412, guid: add8d8655ee94410bb908e4f34e1dca3, type: 3}
       propertyPath: skydder
       value: 
@@ -958,7 +990,7 @@ PrefabInstance:
     - target: {fileID: 1585094412, guid: add8d8655ee94410bb908e4f34e1dca3, type: 3}
       propertyPath: ssc
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 84695800}
     - target: {fileID: 1782708869, guid: add8d8655ee94410bb908e4f34e1dca3, type: 3}
       propertyPath: skydder
       value: 
@@ -966,7 +998,7 @@ PrefabInstance:
     - target: {fileID: 1782708869, guid: add8d8655ee94410bb908e4f34e1dca3, type: 3}
       propertyPath: ssc
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 84695800}
     - target: {fileID: 4386874341049261002, guid: add8d8655ee94410bb908e4f34e1dca3, type: 3}
       propertyPath: m_Name
       value: Bounderies
@@ -1265,7 +1297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &1861558621
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1367,7 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &1911149813
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1412,7 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &1936236890
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1457,7 +1489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &1962972201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1523,7 +1555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skydder: {fileID: 1003480430}
-  ssc: {fileID: 0}
+  ssc: {fileID: 84695800}
 --- !u!61 &2132581345
 BoxCollider2D:
   m_ObjectHideFlags: 0

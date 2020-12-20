@@ -105,7 +105,7 @@ public class Skydder : MonoBehaviour {
 
     private void BombMode() {
         GameObject bomb = Instantiate(BigBoy, transform.position, gameObject.transform.rotation) as GameObject;
-        bomb.GetComponent<Rigidbody2D>().AddForce(transform.up* BigBoySpeed);
+        bomb.GetComponent<Rigidbody2D>().AddForce(transform.up * BigBoySpeed);
 
         onCoolDown = true;
         Invoke("coolDown", coolDownTime);
